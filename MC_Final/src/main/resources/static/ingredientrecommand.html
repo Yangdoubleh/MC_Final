@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=95vmbnm7da"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		window.SpeechRecognition=window.SpeechRecongnition ||
+		window.webkitSpeechRecognition;
+		const recognition= new SpeechRecognition();
+		
+		recognition.inerimResults=true;
+		recognition.addEventListener("result",function(e){
+			$("textarea").val(e.results[0][0].transcript);
+		});
+		
+		$("#mic").click(function(){
+			$("#mic").attr("src","img/mic_on_small.png");
+			recognition.start();
+			setTimeout(function(){
+				$("#mic").attr("src","img/mic_off_small.png");
+				recognition.stop();
+				
+				const ingredient = $("textarea").val();
+				$.post("translationKoEn",{ingredient}, function(data){
+					const result=JSON.parse(data);
+					const englishresult = result.message.result.translatedText;
+					$("textarea").val(englishresult);
+				});
+			}, 3000);
+		});
+	});
+		</script>
+</head>
+<body>
+<center>
+		마이크를 누르고 3초간 말하세요<br>
+		<img src="img/mic_off_small.png" id="mic" width="100"><br>
+		<textarea rows="2" cols="50"></textarea>
+		<div id="foodInfo"></div>
+	</center>
+</body>
+</html>
