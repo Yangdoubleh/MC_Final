@@ -18,4 +18,5 @@ public class SearchController {
 	public String translationKoEn(String ingredient) {
 		return TranslationService.translatekoen(ingredient);
 	}
+	
 }
