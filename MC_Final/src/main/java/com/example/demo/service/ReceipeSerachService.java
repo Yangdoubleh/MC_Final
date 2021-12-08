@@ -14,8 +14,8 @@ import org.springframework.stereotype.Service;
 public class ReceipeSerachService {
 
 	public String ReceipeSearch(String text){
-		String app_id = "6b2b03b4";
-		String app_key = "be191f1feafba8f1c83ecabadadfb742";
+		String app_id = "-";
+		String app_key = "-";
 		try {
 			String ingredient = URLEncoder.encode(text, "UTF-8");
 			String apiURL = "https://api.edamam.com/api/recipes/v2?q="+ ingredient + "&app_id=" + app_id + "&app_key=" + app_key +"&type=public";

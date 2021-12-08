@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=95vmbnm7da"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -26,8 +25,19 @@
 				const ingredient = $("textarea").val();
 				$.post("translationKoEn",{ingredient}, function(data){
 					const result=JSON.parse(data);
-					const englishresult = result.message.result.translatedText;
-					$("textarea").val(englishresult);
+					const englishingred = result.message.result.translatedText;
+					$("textarea").val(englishingred);
+					$.get("receipeSearch",{englishingred}, function(foodrecommand){
+						for (var i=0; i<5; i++) {
+							const foodName = JSON.parse(foodrecommand).hits[i].recipe.label;
+							const foodImage = JSON.parse(foodrecommand).hits[i].recipe.images.REGULAR.url;
+							const foodlink = JSON.parse(foodrecommand).hits[i].recipe.url;
+							$("#foodDiv"+i).html(foodName+"<br><img src='"+foodImage+"'><button id='recipeBtn"+i+"'>레시피 보기</button><button id='BasketBtn"+i+"'>장바구니 넣기</button>");
+						}
+					});
+					$(document).on('click',"#recipeBtn0",function(){
+						window.open(foodlink0);
+					});
 				});
 			}, 3000);
 		});
@@ -39,7 +49,11 @@
 		마이크를 누르고 3초간 말하세요<br>
 		<img src="img/mic_off_small.png" id="mic" width="100"><br>
 		<textarea rows="2" cols="50"></textarea>
-		<div id="foodInfo"></div>
+		<div id="foodDiv0"></div>
+		<div id="foodDiv1"></div><br>
+		<div id="foodDiv2"></div><br>
+		<div id="foodDiv3"></div><br>
+		<div id="foodDiv4"></div>
 	</center>
 </body>
 </html>
