@@ -13,30 +13,87 @@
 		recognition.inerimResults=true;
 		recognition.addEventListener("result",function(e){
 			$("textarea").val(e.results[0][0].transcript);
-		});
+		});		
 		
+		//마이크 on
 		$("#mic").click(function(){
 			$("#mic").attr("src","img/mic_on_small.png");
 			recognition.start();
 			setTimeout(function(){
 				$("#mic").attr("src","img/mic_off_small.png");
-				recognition.stop();
-				
+				recognition.stop();				
 				const ingredient = $("textarea").val();
-				$.post("translationKoEn",{ingredient}, function(data){
-					const result=JSON.parse(data);
-					const englishingred = result.message.result.translatedText;
-					$("textarea").val(englishingred);
-					$.get("receipeSearch",{englishingred}, function(foodrecommand){
-						for (var i=0; i<5; i++) {
-							const foodName = JSON.parse(foodrecommand).hits[i].recipe.label;
-							const foodImage = JSON.parse(foodrecommand).hits[i].recipe.images.REGULAR.url;
-							const foodlink = JSON.parse(foodrecommand).hits[i].recipe.url;
-							$("#foodDiv"+i).html(foodName+"<br><img src='"+foodImage+"'><button id='recipeBtn"+i+"'>레시피 보기</button><button id='BasketBtn"+i+"'>장바구니 넣기</button>");
+				
+				//식재료 API 사용
+				$.get("receipeSearch",{ingredient}, function(foodrecommand){
+					let foodLink = [];
+					let foodName = [];
+					let foodNameKr = [];
+					
+					//랜덤 숫자 생성
+					let randomIndexArray = [];
+					for (var i=0; i<5; i++){
+						randomNum = Math.floor(Math.random()*19);
+						if (randomIndexArray.indexOf(randomNum) == -1) {
+							randomIndexArray.push(randomNum);
 						}
+						else i--;
+					}
+					
+					//List로 만들어서 URL 저장, 이름 한글로 변환
+					for (var i=0; i<5; i++) {
+					foodLink[i] = JSON.parse(foodrecommand).hits[randomIndexArray[i]].recipe.url;
+					}
+					foodName = JSON.parse(foodrecommand).hits[randomIndexArray[0]].recipe.label;
+					$.post("translationEnKo",{foodName} ,function(ko){
+						foodNameKr[0] = ko;
 					});
+					foodName = JSON.parse(foodrecommand).hits[randomIndexArray[1]].recipe.label;
+					$.post("translationEnKo",{foodName} ,function(ko){
+						foodNameKr[1] = ko;
+					});
+					foodName = JSON.parse(foodrecommand).hits[randomIndexArray[2]].recipe.label;
+					$.post("translationEnKo",{foodName} ,function(ko){
+						foodNameKr[2] = ko;
+					});
+					foodName = JSON.parse(foodrecommand).hits[randomIndexArray[3]].recipe.label;
+					$.post("translationEnKo",{foodName} ,function(ko){
+						foodNameKr[3] = ko;
+					});
+					foodName = JSON.parse(foodrecommand).hits[randomIndexArray[4]].recipe.label;
+					$.post("translationEnKo",{foodName} ,function(ko){
+						foodNameKr[4] = ko;
+					});
+					//Food Recommand 화면 띄우기
+					for (var i=0; i<5; i++) {
+						console.log(foodNameKr);
+						const name = foodNameKr[i];
+						console.log(name);
+						const foodImage = JSON.parse(foodrecommand).hits[randomIndexArray[i]].recipe.images.REGULAR.url;
+						const foodKcal = JSON.parse(foodrecommand).hits[randomIndexArray[i]].recipe.totalNutrients.ENERC_KCAL.quantity.toFixed(1);
+						const foodFat = JSON.parse(foodrecommand).hits[randomIndexArray[i]].recipe.totalNutrients.FAT.quantity.toFixed(1);
+						const foodProt = JSON.parse(foodrecommand).hits[randomIndexArray[i]].recipe.totalNutrients.PROCNT.quantity.toFixed(1);
+						const foodCarbs = JSON.parse(foodrecommand).hits[randomIndexArray[i]].recipe.totalNutrients.CHOCDF.quantity.toFixed(1);
+						$("#foodDiv"+i).html("<h2>"+foodNameKr[i]+"</h2><br><img src='"+foodImage+"'><button id='recipeBtn"+i+"'>레시피 보기</button><button id='BasketBtn"+i+"'>장바구니 넣기</button><h4>칼로리 : "+foodKcal+" kcal</h4><h4>탄수화물 : "+foodCarbs+" g</h4><h4>단백질 : "+foodProt+" g</h4><h4>지방 : "+foodFat+" g</h4>");
+						document.getElementById('foodDiv'+i).style.border='3px solid #0A0A0A';
+						document.getElementById('foodDiv'+i).style.background='#f5f5f5';
+						document.getElementById('foodDiv'+i).style.width='380px';
+						document.getElementById('foodDiv'+i).style.height='auto';
+					}
 					$(document).on('click',"#recipeBtn0",function(){
-						window.open(foodlink0);
+						window.open(foodLink[0]);
+					});
+					$(document).on('click',"#recipeBtn1",function(){
+						window.open(foodLink[1]);
+					});
+					$(document).on('click',"#recipeBtn2",function(){
+						window.open(foodLink[2]);
+					});
+					$(document).on('click',"#recipeBtn3",function(){
+						window.open(foodLink[3]);
+					});
+					$(document).on('click',"#recipeBtn4",function(){
+						window.open(foodLink[4]);
 					});
 				});
 			}, 3000);
@@ -46,10 +103,9 @@
 </head>
 <body>
 <center>
-		마이크를 누르고 3초간 말하세요<br>
-		<img src="img/mic_off_small.png" id="mic" width="100"><br>
+		마이크를 누르고 3초간 말하세요<img src="img/mic_off_small.png" id="mic" width=><br>
 		<textarea rows="2" cols="50"></textarea>
-		<div id="foodDiv0"></div>
+		<div id="foodDiv0"></div><br>
 		<div id="foodDiv1"></div><br>
 		<div id="foodDiv2"></div><br>
 		<div id="foodDiv3"></div><br>

@@ -14,16 +14,16 @@ import org.springframework.stereotype.Service;
 public class ReceipeSerachService {
 
 	public String ReceipeSearch(String text){
-		String app_id = "-";
-		String app_key = "-";
+		String app_id = "934efd95";
+		String app_key = "1b584c67dcdd41c1838c37007a541a1d";
 		try {
 			String ingredient = URLEncoder.encode(text, "UTF-8");
 			String apiURL = "https://api.edamam.com/api/recipes/v2?q="+ ingredient + "&app_id=" + app_id + "&app_key=" + app_key +"&type=public";
 			URL url = new URL(apiURL);
 			HttpURLConnection con = (HttpURLConnection)url.openConnection();
 			con.setRequestMethod("GET");
-			con.setConnectTimeout(30000);
-			con.setReadTimeout(30000);
+			con.setConnectTimeout(10000);
+			con.setReadTimeout(10000);
 			try (InputStream in = con.getInputStream();BufferedReader br=new BufferedReader(new InputStreamReader(in));
 			) {
 				String inputLine;
