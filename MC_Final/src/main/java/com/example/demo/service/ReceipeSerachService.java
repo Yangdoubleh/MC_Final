@@ -8,14 +8,19 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ReceipeSerachService {
 
+	@Value("${recipe.clientId}")
+    private String app_id;
+    
+    @Value("${recipe.clientSecret}")
+    private String app_key;
+    
 	public String ReceipeSearch(String text){
-		String app_id = "934efd95";
-		String app_key = "1b584c67dcdd41c1838c37007a541a1d";
 		try {
 			String ingredient = URLEncoder.encode(text, "UTF-8");
 			String apiURL = "https://api.edamam.com/api/recipes/v2?q="+ ingredient + "&app_id=" + app_id + "&app_key=" + app_key +"&type=public";
