@@ -27,8 +27,8 @@ public class ReceipeSerachService {
 			URL url = new URL(apiURL);
 			HttpURLConnection con = (HttpURLConnection)url.openConnection();
 			con.setRequestMethod("GET");
-			con.setConnectTimeout(10000);
-			con.setReadTimeout(10000);
+			con.setConnectTimeout(3000);
+			con.setReadTimeout(3000);
 			try (InputStream in = con.getInputStream();BufferedReader br=new BufferedReader(new InputStreamReader(in));
 			) {
 				String inputLine;
