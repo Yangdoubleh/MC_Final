@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.example.demo.dao.FoodDAO">
+
+	<insert id="insertFood" parameterType="foodVO">
+		insert into food (foodName, kcal, carb, prot, fat, recipeURL, imageURL)
+		values(#{foodName}, #{kcal}, #{carb}, #{prot}, #{fat}, #{recipeURL}, #{imageURL})
+	</insert>
+	
+	<select id="selectFood" parameterType="foodVO" resultType="foodVO">
+		select * from food where foodName=#{foodName}
+	</select>
+	
+</mapper>  

@@ -6,7 +6,10 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.PostMapping;
+=======
+>>>>>>> master
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,14 +22,42 @@ public class MemberController {
 	@Autowired
 	MemberService memberService;
 	
+<<<<<<< HEAD
 	@PostMapping("login")
+=======
+	@RequestMapping("memberInsert")
+	public String memberInsert(MemberVO memberVO) {
+		System.out.println(memberVO);
+		
+		if(memberVO.getId() ==null || memberVO.getId().equals("") || 
+				memberVO.getPw()==null || memberVO.getPw().equals("")) {
+			
+			return "error";
+		}
+		
+		
+		try {
+			memberService.memberInsert(memberVO);
+			return "memberInsert_result";
+		}catch(DataAccessException e) {
+			return "error";
+		}
+	}
+	
+	@RequestMapping("login")
+>>>>>>> master
 	@ResponseBody
 	public String login(HttpSession session,MemberVO memberVO) {
 		System.out.println(memberVO);	
 		JSONObject jo=new JSONObject();
 		
+<<<<<<< HEAD
 		if(memberVO.getMemberID() ==null || memberVO.getMemberID().equals("") || 
 				memberVO.getPassword()==null || memberVO.getPassword().equals("")) {
+=======
+		if(memberVO.getId() ==null || memberVO.getId().equals("") || 
+				memberVO.getPw()==null || memberVO.getPw().equals("")) {
+>>>>>>> master
 			jo.put("msg", "id와 pw는 필수입니다");
 			return jo.toJSONString();
 		}
@@ -35,9 +66,17 @@ public class MemberController {
 			MemberVO vo=memberService.login(memberVO);
 			if(vo!=null) {
 				session.setAttribute("memberVO", memberVO);			
+<<<<<<< HEAD
 				jo.put("memberID", vo.getMemberID());
 			}else {
 				jo.put("msg", "id와 pw를 확인하세요");
+=======
+				jo.put("id", vo.getId());
+				
+			}else {
+				jo.put("msg", "id와 pw를 확인하세요");
+				
+>>>>>>> master
 			}
 		}catch(DataAccessException e) {
 			jo.put("msg", e.getMessage());
@@ -45,6 +84,7 @@ public class MemberController {
 		
 		return jo.toJSONString();
 	}
+<<<<<<< HEAD
 	
 	@PostMapping("logout")
 	@ResponseBody
@@ -63,3 +103,8 @@ public class MemberController {
 	}
 
 }
+=======
+}
+
+
+>>>>>>> master

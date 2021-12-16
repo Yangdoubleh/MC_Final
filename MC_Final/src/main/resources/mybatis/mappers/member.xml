@@ -2,11 +2,37 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<<<<<<< HEAD
 
 <mapper namespace="com.example.demo.dao.MemberDAO">	
 	
 	<select id="login"  resultType="memberVO" parameterType="memberVO">
 		select * from member where memberID=#{memberID} and password=#{password}
 	</select>	
+=======
+  
+<mapper namespace="com.example.demo.dao.MemberDAO">
+
+	<select id="login" parameterType="memberVO" resultType="memberVO">
+		select * from member where id=#{id} and pw=#{pw}
+	</select>
+
+	<select id="selectAllMember" resultType="memberVO">
+		select * from member 
+	</select>
+	
+	<insert id="insertMember" parameterType="memberVO">
+		insert into member(id,pw,email,nickname,age)
+		values(#{id},#{pw},#{email},#{nickname},#{age})
+	</insert>
+	
+	<update id="updateMemberPw" parameterType="memberVO">
+		update member set pw=#{pw} where id=#{id}
+	</update>
+	
+	<delete id="deleteMember" parameterType="String">
+		delete from member where id=#{id}
+	</delete>
+>>>>>>> master
 	
 </mapper>  
