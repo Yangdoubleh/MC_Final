@@ -5,6 +5,8 @@
   
 <configuration>
 	<mappers>
+		<mapper resource="mybatis/mappers/member.xml"/>
+		<mapper resource="mybatis/mappers/basket.xml"/>
 		<mapper resource="mybatis/mappers/membermenu.xml"/>
 	</mappers>
-</configuration>
+</configuration>  

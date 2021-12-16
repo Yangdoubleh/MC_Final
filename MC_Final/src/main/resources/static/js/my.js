@@ -1,29 +1,52 @@
 $(document).ready(function(){
-	const id=$.cookie("id");
-	if(id){
-		$("#loginDiv").html(id+" <button id='logoutBtn'>logout</button>");
+	
+	const memberID=$.cookie("memberID");
+	if(memberID){
+		$("#loginDiv").html(memberID+" login ok <button id='logoutBtn'>logout</button>");
 	}
 	
-	$(document).on('click','#logoutBtn',function(){
-		$.post('logout',{},function(){			
-				$.removeCookie("id");		
-				location.reload();			
-		});		
-	});
-	
-	
+	//로그인
 	$("#loginBtn").click(function(){
-		const id=$("#id").val();
-		const pw=$("#pw").val();
-		$.post('login',{id,pw},function(data){
+		const memberID=$("#memberID").val();
+		const password=$("#password").val();
+		
+		//alert(memberID+":"+password);
+		
+		$.post('../login',{memberID,password},function(data){
 			data=JSON.parse(data);
-			if(data.id){
-				$.cookie("id",id);
-				$("#loginDiv").html(data.id+" <button id='logoutBtn'>logout</button>");
-			}else{
-				alert("id와 pw 확인해주세요");
+			if(data.memberID){
+				$("#loginDiv").html(data.memberID+" login ok <button id='logoutBtn'>logout</button>");
+				$.cookie("memberID",data.memberID);
 			}
+			
 		});
 	});
 	
+	//로그아웃
+	$(document).on("click", "#logoutBtn", function(){
+		$.post('../logout',{},function(data){
+			data=JSON.parse(data);
+			if(data.msg=="ok"){
+				$.removeCookie("memberID");
+				$.removeCookie("membermenu_memberID",{path:'/'});
+				location.reload();
+			}else{
+				alert(data.msg);
+			}
+		});
+	});
+
 });
+
+//장바구니
+function insertBasket(foodName){
+	const memberID=$.cookie("memberID");
+	if(memberID){
+		alert(foodName+"를(을) 장바구니에 넣겠습니까?");
+		$.post('insertBasket',{foodName},function(data){
+			alert(data);
+		});
+	}else{
+		alert("로그인부터 하세요");
+	}
+}

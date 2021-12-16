@@ -2,13 +2,13 @@ package com.example.demo.vo;
 
 public class MemberVO {
 	
-	private String id,pw,nickname,email,age;
+	private String memberID,password,email,nickname,age;
 
-	public MemberVO(String id, String pw, String name, String email, String nickname, String age) {
-		setId(id);
-		setPw(pw);
-		setNickname(nickname);
+	public MemberVO(String memberID, String password, String email, String nickname, String age) {
+		setMemberID(memberID);
+		setPassword(password);
 		setEmail(email);
+		setNickname(nickname);
 		setAge(age);
 	}
 
@@ -17,28 +17,20 @@ public class MemberVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getId() {
-		return id;
+	public String getMemberID() {
+		return memberID;
 	}
 
-	public void setId(String id) {
-		if(id!=null && !id.equals("")) {
-			this.id = id;
-		}else {
-			System.out.println("id를 입력하세요");
-		}
+	public void setMemberID(String memberID) {
+		this.memberID = memberID;
 	}
 
-	public String getPw() {
-		return pw;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPw(String pw) {
-		if(pw!=null && !pw.equals("")) {
-			this.pw = pw;
-		}else {
-			System.out.println("pw를 입력하세요");
-		}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getEmail() {
@@ -67,8 +59,8 @@ public class MemberVO {
 
 	@Override
 	public String toString() {
-		return "MemberVO [id=" + id + ", pw=" + pw + ", email=" + email
-				+ ", nickname=" + nickname + ", age=" + age + "]";
+		return "MemberVO [memberID=" + memberID + ", password=" + password + ", email=" + email + ", nickname="
+				+ nickname + ", age=" + age + "]";
 	}
 	
 	

@@ -22,30 +22,49 @@
   </style>
   <meta charset="UTF-8">
   <title>나의 식단</title>
-</head>
+
 <script>
 	function fn_articleForm(articleForm){
-		var id=$.cookie(id);
-	  if(id){
+		var memberID=getCookie("memberID");
+	  if(memberID){
+		  document.cookie="membermenu_memberID="+memberID;
 	    location.href=articleForm;
 	  }else{
 	    alert("로그인 후 식단 저장이 가능합니다.")
 	    window.close();
 	  }
 	}
+	function getCookie(cname) {
+		  let name = cname + "=";
+		  let decodedCookie = decodeURIComponent(window.opener.document.cookie);
+		  let ca = decodedCookie.split(';');
+		  for(let i = 0; i <ca.length; i++) {
+		    let c = ca[i];
+		    while (c.charAt(0) == ' ') {
+		      c = c.substring(1);
+		    }
+		    if (c.indexOf(name) == 0) {
+		      return c.substring(name.length, c.length);
+		    }
+		  }
+		  return "";
+	}
 </script>
+</head>
 <body>
-<br><br><br>
+<br>
+<h2 align="center">식단 보기</h2>
+<br>
 <div class="container">
 <table align="center" border="0"  width="80%"  class="table table-striped">
   <tr height="10" align="center"  bgcolor="lightgray">
-     <td width="10%">글번호</td>
-     <td >작성자</td>              
-     <td >제목</td>
-     <td >작성일</td>
+	<td >No</td>
+	<td >작성자</td>              
+	<td >음식 이름</td>
+	<td >식단한 일자</td>
   </tr>
 <c:choose>
-  <c:when test="${menuList ==null }" >
+	<c:when test="${membermenuList == null }" >
     <tr  height="10">
       <td colspan="4">
          <p align="center">
@@ -53,37 +72,23 @@
         </p>
       </td>  
     </tr>
-  </c:when>
-  <c:when test="${menuList !=null }" >
-    <c:forEach  var="article" items="${menuList }" varStatus="articleNum" >
-     <tr align="center">
-	<td width="5%">${articleNum.count}</td>
-	<td width="10%">${article.id }</td>
-	<td align='left'  width="35%">
-	  <span style="padding-right:30px"></span>
-	   <c:choose>
-	      <c:when test='${article.lvl > 1 }'>  
-	         <c:forEach begin="1" end="${article.lvl }" step="1">
-	              <span style="padding-left:20px"></span>    
-	         </c:forEach>
-	         <span style="font-size:12px;">[답변]</span>
-                   <a class='cls1' href="../viewArticle?articleNO=${article.no}">${article.title}</a>
-	          </c:when>
-	          <c:otherwise>
-	            <a class='cls1' href="../viewArticle?articleNO=${article.no}">${article.title }</a>
-	          </c:otherwise>
-	        </c:choose>
-	  </td>
-	  <td  width="30%">${article.writeDate}</td> 
-	</tr>
-    </c:forEach>
-     </c:when>
-    </c:choose>
+	</c:when>
+	<c:when test="${membermenuList !=null }" >
+	<c:forEach  var="article" items="${membermenuList }" varStatus="articleNum" >
+		<tr align="center">
+			<td width="5%">  ${articleNum.count}</td>
+			<td width="20%"> ${article.memberID}</td>
+			<td width="40%"> ${article.foodName}</td>
+			<td width="40%"> ${article.foodDate}</td>
+		</tr>
+	</c:forEach>
+	</c:when>
+</c:choose>
 </table>
 </div>
-<!-- <a  class="cls1"  href="#"><p class="cls2">글쓰기</p></a> -->
+
 <center>
-<a    href="javascript:fn_articleForm('../menuWriteForm')"><p class="btn btn-info">글쓰기</p></a>
+	<a href="javascript:fn_articleForm('../membermenuWriteForm')"><p class="btn btn-info">식단 입력</p></a>
 </center>
 </body>
 </html>

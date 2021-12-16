@@ -6,7 +6,15 @@
 <mapper namespace="com.example.demo.dao.MemberMenuDAO">	
 	
 	<select id="membermenuList"  resultType="membermenuVO">
-		select * from board order by no desc
+		select * from membermenu order by menuNo desc
 	</select>
 	
-</mapper>  
+	<insert id="membermenuWrite" parameterType="membermenuVO">
+	<![CDATA[
+		insert into membermenu( menuNo, memberID, foodName, foodDate) 
+		values(#{menuNo}, #{memberID}, #{foodName}, #{foodDate} )
+	]]>
+	</insert>
+
+	
+</mapper> 
