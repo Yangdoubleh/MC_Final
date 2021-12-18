@@ -2,14 +2,6 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<<<<<<< HEAD
-
-<mapper namespace="com.example.demo.dao.MemberDAO">	
-	
-	<select id="login"  resultType="memberVO" parameterType="memberVO">
-		select * from member where memberID=#{memberID} and password=#{password}
-	</select>	
-=======
   
 <mapper namespace="com.example.demo.dao.MemberDAO">
 
@@ -33,6 +25,5 @@
 	<delete id="deleteMember" parameterType="String">
 		delete from member where id=#{id}
 	</delete>
->>>>>>> master
 	
 </mapper>  

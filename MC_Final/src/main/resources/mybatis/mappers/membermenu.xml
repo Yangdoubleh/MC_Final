@@ -11,6 +11,14 @@
 	</insert>
 	
 	<select id="selectMemberMenu" parameterType="menuVO" resultType="menuVO">
-		select * from membermemu where foodName=#{foodName}
+		select * from membermenu where foodName=#{foodName}
 	</select>
+	
+	<select id="membermenuList" parameterType="menuVO" resultType="menuVO">
+		select * from membermenu where memberID=#{memberID}
+	</select>
+	
+	<delete id="deleteMemberMenu" parameterType="menuVO">
+		delete from membermenu where foodName=#{foodName}
+	</delete>
 </mapper>  

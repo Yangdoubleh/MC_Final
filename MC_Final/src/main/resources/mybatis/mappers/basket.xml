@@ -2,17 +2,6 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<<<<<<< HEAD
-
-<mapper namespace="com.example.demo.dao.BasketDAO">
-
-	<insert id="insertBasket" parameterType="basketVO">
-		insert into basket(memberID,foodName) values(#{memberID}, #{foodName})
-	</insert>
-	
-</mapper>
-=======
-  
 <mapper namespace="com.example.demo.dao.BasketDAO">
 
 	<insert id="insertBasket" parameterType="menuVO">
@@ -24,5 +13,12 @@
 		select * from basket where foodName=#{foodName}
 	</select>
 	
+	<select id="basketList" parameterType="menuVO" resultType="menuVO">
+		select * from basket where memberID=#{memberID}
+	</select>
+	
+	<delete id="deleteBasket" parameterType="menuVO">
+		delete from basket where foodName=#{foodName}
+	</delete>
+		
 </mapper>  
->>>>>>> master
