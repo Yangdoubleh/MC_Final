@@ -13,9 +13,9 @@ import com.example.demo.vo.MenuVO;
 public interface MemberMenuDAO {
 	
 	public List<MenuVO> membermenuList(MenuVO menuVO) throws DataAccessException;
-	//public void membermenuWrite(MemberMenuVO membermenuVO) throws DataAccessException;
 	public void insertMemberMenu(MenuVO menuVO) throws DataAccessException;
 	public MenuVO selectMemberMenu(MenuVO menuVO) throws DataAccessException;
 	public void deleteMemberMenu(MenuVO menuVO) throws DataAccessException;
+	public void membermenuWrite(MenuVO menuVO) throws DataAccessException;
 
 }

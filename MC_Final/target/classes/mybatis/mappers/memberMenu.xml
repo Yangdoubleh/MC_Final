@@ -21,4 +21,9 @@
 	<delete id="deleteMemberMenu" parameterType="menuVO">
 		delete from membermenu where foodName=#{foodName}
 	</delete>
+	
+	<insert id="membermenuWrite" parameterType="menuVO">
+		insert into membermenu (memberID, foodName, foodDate)
+		values(#{memberID}, #{foodName}, #{foodDate})
+	</insert>
 </mapper>  

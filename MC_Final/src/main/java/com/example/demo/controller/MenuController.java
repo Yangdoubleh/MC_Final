@@ -89,18 +89,12 @@ public class MenuController {
 		}
 		return "오류";
 	}
-		
-	//식단 입력하기
-	/*@RequestMapping("membermenuWriteForm")	
-	public String membermenuWriteForm() {			
-		return "membermenuWriteForm";		
-	}
 	
 	//식단 저장하기
-	@RequestMapping("membermenuWrite")
-	public RedirectView membermenuWrite(MemberMenuVO membermenuVO) {
-		System.out.println(membermenuVO);
-		membermenuService.membermenuWrite(membermenuVO);
-		return new RedirectView("membermenuList"); 
-	}*/
+	/* @RequestMapping("membermenuWrite")
+	 * public RedirectView membermenuWrite(MenuVO
+	 * menuVO) { System.out.println(menuVO);
+	 * memberMenuService.membermenuWrite(menuVO); return new
+	 * RedirectView("membermenuList"); }
+	 */
 }
