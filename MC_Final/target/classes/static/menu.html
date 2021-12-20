@@ -12,6 +12,7 @@
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
+
 $(document).ready(function(){
 	const memberID = "aaa";
 	$.post("membermenuList", {memberID}, function(membermenuList){
@@ -87,42 +88,68 @@ $(document).ready(function(){
 			window.open(recipeURL);
 		});
 		
-		//장바구니 삭제 버튼 기능
-		$(document).on('click', "#deleteBtn0", function(){
-			const foodName = JSON.parse(membermenuList)[0].foodName;
-			$.post("deleteMemberMenu",{foodName},function(msg){
-				alert(msg);
-			});
-			location.href="menu.html";
+		//식단 삭제 버튼 기능
+		$("#deleteBtn0").click(function(){
+			var result = confirm("정말 삭제 하시겠습니까?");
+			if(result){
+				const foodName = JSON.parse(membermenuList)[0].foodName;
+				$.post("deleteMemberMenu",{foodName},function(msg){
+					alert(msg);
+					location.href="menu.html";
+				});
+			} else{
+				//alert();
+			}
 		});
-		$(document).on('click', "#deleteBtn1", function(){
-			const foodName = JSON.parse(membermenuList)[1].foodName;
-			$.post("deleteMemberMenu",{foodName},function(msg){
-				alert(msg);
-			});
-			location.href="menu.html";
+		$("#deleteBtn1").click(function(){
+			var result = confirm("정말 삭제 하시겠습니까?");
+			if(result){
+				const foodName = JSON.parse(membermenuList)[1].foodName;
+				$.post("deleteMemberMenu",{foodName},function(msg){
+					alert(msg);
+					location.href="menu.html";
+				});
+			} else{
+				//alert();
+			}
 		});
-		$(document).on('click', "#deleteBtn2", function(){
-			const foodName = JSON.parse(membermenuList)[2].foodName;
-			$.post("deleteMemberMenu",{foodName},function(msg){
-				alert(msg);
-			});
-			location.href="menu.html";
+		$("#deleteBtn2").click(function(){
+			var result = confirm("정말 삭제 하시겠습니까?");
+			if(result){
+				const foodName = JSON.parse(membermenuList)[2].foodName;
+				$.post("deleteMemberMenu",{foodName},function(msg){
+					alert(msg);
+					location.href="menu.html";
+				});
+			} else{
+				//alert();
+			}
 		});
-		$(document).on('click', "#deleteBtn3", function(){
-			const foodName = JSON.parse(membermenuList)[3].foodName;
-			$.post("deleteMemberMenu",{foodName},function(msg){
-				alert(msg);
-			});
-			location.href="menu.html";
+		$("#deleteBtn3").click(function(){
+			var result = confirm("정말 삭제 하시겠습니까?");
+			if(result){
+				const foodName = JSON.parse(membermenuList)[3].foodName;
+				$.post("deleteMemberMenu",{foodName},function(msg){
+					alert(msg);
+					location.href="menu.html";
+				});
+			} else{
+				//alert();
+			}
 		});
-		$(document).on('click', "#deleteBtn4", function(){
-			const foodName = JSON.parse(membermenuList)[4].foodName;
-			$.post("deleteMemberMenu",{foodName},function(msg){
-				alert(msg);
-			});
-			location.href="menu.html";
+		$("#deleteBtn4").click(function(){
+			var result = confirm("정말 삭제 하시겠습니까?");
+			if(result){
+				const foodName = JSON.parse(membermenuList)[4].foodName;
+				$.post("deleteMemberMenu",{foodName},function(msg){
+					alert(msg);
+					location.href="menu.html";
+				});
+			} else{
+				//alert();
+			}
 		});
+		
 	});
 });
 </script>
@@ -159,9 +186,9 @@ $(document).ready(function(){
 	</header>
 	<!-- Header End -->
 	<div class="main-form">
+		<h5>나의 식단 보기</h5><br>
 		<br>
 		<br>
-		<div>나의 식단 보기</div><br>
 		<div id="MenuDiv_0">식단에 저장된 음식이 없습니다.</div><br>
 		<div id="MenuDiv_1"></div><br>
 		<div id="MenuDiv_2"></div><br>

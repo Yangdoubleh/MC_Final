@@ -82,13 +82,7 @@ public class BasketController {
 	//장바구니 삭제하기
 	@RequestMapping("deleteBasket")
 	@ResponseBody
-	public String deleteBasket(FoodVO foodVO) {
-		MenuVO menuVO = new MenuVO();
-		menuVO.setMemberID("aaa");
-		menuVO.setFoodName(foodVO.getFoodName());
-		LocalDateTime now = LocalDateTime.now();
-		String formatedNow = now.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초"));
-		menuVO.setFoodDate(formatedNow);
+	public String deleteBasket(MenuVO menuVO) {
 		try {
 			if(basketService.basketSelect(menuVO)!=null) {
 				basketService.deleteBasket(menuVO);

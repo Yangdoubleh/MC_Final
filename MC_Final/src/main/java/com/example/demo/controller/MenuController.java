@@ -78,13 +78,7 @@ public class MenuController {
 	//식단 삭제하기
 	@RequestMapping("deleteMemberMenu")
 	@ResponseBody
-	public String deleteMemberMenu(FoodVO foodVO) {
-		MenuVO menuVO = new MenuVO();
-		menuVO.setMemberID("aaa");
-		menuVO.setFoodName(foodVO.getFoodName());
-		LocalDateTime now = LocalDateTime.now();
-		String formatedNow = now.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초"));
-		menuVO.setFoodDate(formatedNow);
+	public String deleteMemberMenu(MenuVO menuVO) {
 		try {
 			if(memberMenuService.selectMemberMenu(menuVO)!=null) {
 				memberMenuService.deleteMemberMenu(menuVO);

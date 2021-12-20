@@ -102,41 +102,67 @@ $(document).ready(function(){
 		});
 
 		//장바구니 삭제 버튼 기능
-		$(document).on('click', "#deleteBtn0", function(){
-			const foodName = JSON.parse(basketList)[0].foodName;
-			$.post("deleteBasket",{foodName},function(msg){
-				alert(msg);
-			});
-			location.href="basket.html";
+		$("#deleteBtn0").click(function(){
+			var result = confirm("정말 삭제 하시겠습니까?");
+			if(result){
+				const foodName = JSON.parse(basketList)[0].foodName;
+				$.post("deleteBasket",{foodName},function(msg){
+					alert(msg);
+					location.href="basket.html";
+				});
+			} else{
+				//alert();
+			}
 		});
-		$(document).on('click', "#deleteBtn1", function(){
-			const foodName = JSON.parse(basketList)[1].foodName;
-			$.post("deleteBasket",{foodName},function(msg){
-				alert(msg);
-			});
-			location.href="basket.html";
+		$("#deleteBtn1").click(function(){
+			var result = confirm("정말 삭제 하시겠습니까?");
+			if(result){
+				const foodName = JSON.parse(basketList)[1].foodName;
+				$.post("deleteBasket",{foodName},function(msg){
+					alert(msg);
+					location.href="basket.html";
+				});
+			} else{
+				//alert();
+			}
 		});
-		$(document).on('click', "#deleteBtn2", function(){
-			const foodName = JSON.parse(basketList)[2].foodName;
-			$.post("deleteBasket",{foodName},function(msg){
-				alert(msg);
-			});
-			location.href="basket.html";
+		$("#deleteBtn2").click(function(){
+			var result = confirm("정말 삭제 하시겠습니까?");
+			if(result){
+				const foodName = JSON.parse(basketList)[2].foodName;
+				$.post("deleteBasket",{foodName},function(msg){
+					alert(msg);
+					location.href="basket.html";
+				});
+			} else{
+				//alert();
+			}
 		});
-		$(document).on('click', "#deleteBtn3", function(){
-			const foodName = JSON.parse(basketList)[3].foodName;
-			$.post("deleteBasket",{foodName},function(msg){
-				alert(msg);
-			});
-			location.href="basket.html";
+		$("#deleteBtn3").click(function(){
+			var result = confirm("정말 삭제 하시겠습니까?");
+			if(result){
+				const foodName = JSON.parse(basketList)[3].foodName;
+				$.post("deleteBasket",{foodName},function(msg){
+					alert(msg);
+					location.href="basket.html";
+				});
+			} else{
+				//alert();
+			}
 		});
-		$(document).on('click', "#deleteBtn4", function(){
-			const foodName = JSON.parse(basketList)[4].foodName;
-			$.post("deleteBasket",{foodName},function(msg){
-				alert(msg);
-			});
-			location.href="basket.html";
+		$("#deleteBtn4").click(function(){
+			var result = confirm("정말 삭제 하시겠습니까?");
+			if(result){
+				const foodName = JSON.parse(basketList)[4].foodName;
+				$.post("deleteBasket",{foodName},function(msg){
+					alert(msg);
+					location.href="basket.html";
+				});
+			} else{
+				//alert();
+			}
 		});
+		
 	});
 });
 </script>
@@ -173,9 +199,9 @@ $(document).ready(function(){
 	</header>
 	<!-- Header End -->
 	<div class="main-form">
+		<h5>장바구니 보기</h5><br>
 		<br>
 		<br>
-		<div>장바구니 보기</div><br>
 		<div id="BasketDiv_0">장바구니에 들어있는 음식이 없습니다.</div><br>
 		<div id="BasketDiv_1"></div><br>
 		<div id="BasketDiv_2"></div><br>
