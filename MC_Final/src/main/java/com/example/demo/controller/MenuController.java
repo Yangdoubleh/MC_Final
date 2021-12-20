@@ -90,11 +90,20 @@ public class MenuController {
 		return "오류";
 	}
 	
-	//식단 저장하기
-	/* @RequestMapping("membermenuWrite")
-	 * public RedirectView membermenuWrite(MenuVO
-	 * menuVO) { System.out.println(menuVO);
-	 * memberMenuService.membermenuWrite(menuVO); return new
-	 * RedirectView("membermenuList"); }
-	 */
+	//식단 입력 화면 제공
+	@RequestMapping("membermenuWriteForm")	
+	public String membermenuWriteForm() {			
+		return "membermenuWriteForm";
+	}
+		
+	//식단 등록
+	@RequestMapping("membermenuWrite")
+	public RedirectView membermenuWrite(MenuVO menuVO) {
+		LocalDateTime now = LocalDateTime.now();
+		String formatedNow = now.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초"));
+		menuVO.setFoodDate(formatedNow);
+		System.out.println(menuVO);
+		memberMenuService.membermenuWrite(menuVO);
+		return new RedirectView("menu.html");
+	}
 }

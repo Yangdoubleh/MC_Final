@@ -23,7 +23,9 @@
 	</delete>
 	
 	<insert id="membermenuWrite" parameterType="menuVO">
-		insert into membermenu (memberID, foodName, foodDate)
-		values(#{memberID}, #{foodName}, #{foodDate})
+		<![CDATA[
+			insert into membermenu (memberID, foodName, foodDate)
+			values(#{memberID}, #{foodName}, #{foodDate})
+		]]>
 	</insert>
 </mapper>  

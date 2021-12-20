@@ -22,7 +22,7 @@
   </style>
   <meta charset="UTF-8">
   <title>나의 식단</title>
-
+<link href="signup.css" rel="stylesheet">
 <script>
 	function fn_articleForm(articleForm){
 		var memberID=getCookie("memberID");

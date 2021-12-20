@@ -17,52 +17,30 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-  
+<link href="signup.css" rel="stylesheet">
 <script type="text/javascript">
- 
-  function backToList(){
-	  location.href="../membermenuList";
-  }
-  
-$(document).ready(function(){
-	const membermenu_memberID=$.cookie('membermenu_memberID');
-	if(membermenu_memberID){
-		$("#memberID").val(membermenu_memberID);
-	}else{
-		alert("로그인 먼저 하세요");
-		window.close();
-	}
-});
-
+	$(document).ready(function(){
+		const memberID="aaa";
+		$("#memberID").val(memberID);
+	});
 </script>
- <title>식단 입력창</title>
+
+ <title>식단 입력</title>
 </head>
 <body>
 <div class="container">
-<h3 style="text-align:center">식단입력</h3>
- <form name="articleForm" method="post"   action="../membermenuWrite"   enctype="multipart/form-data">
-	<table class="table table-border">
- 	<tr>
-		<td > 작성자 : </td>
-		<td colspan=2  ><input type="text" size="50" maxlength="100"  id="memberID" name="memberID" 
-			readonly style="background:lightgray" /> </td>
-	</tr>
-	<tr>
-		<td > 음식이름 : </td>
-		<td colspan="2"><input type="text" size="50"  maxlength="300" id="foodName" name="foodName" /></td>
-	</tr>
-	<tr>
-		<td > 식단한 일자 : </td>
-		<td colspan="2"><input type="date" size="50"  maxlength="300" id="foodDate" name="foodDate" /></td>
-	</tr>
-	<tr>
-		<td > </td>
-		<td colspan="2" >
-			<input type="submit" value="식단 저장하기" class="btn btn-info"/>
-			<input type=button value="식단으로" onClick="backToList()" class="btn btn-warning"/>
-		</td>
-	</tr>
-	</table>
+ <form method="post" action="membermenuWrite"   enctype="multipart/form-data" class="joinForm">
+	<div>                  
+		<h2><i class="bi bi-journal-text" style="color:#d39a9d; font-size:40px"></i>&nbsp;식단 입력</h2>
+	</div>
+	<div class="textForm">
+		<input id="memberID" name="memberID" type="text" class="id" required readonly style="background:lightgray">
+	</div>
+	<div class="textForm">
+		<input id="foodName" name="foodName" type="text" class="id" placeholder="음식 이름" required>
+	</div>
+	<input type="button" onclick="location.href='menu.html'" class="btn" value="뒤로가기"/>
+	<input type="submit" class="btn" value="식단 저장하기"/>
  </form>
 </div>
 </body>
