@@ -11,11 +11,7 @@
 	</insert>
 	
 	<select id="selectMemberMenu" parameterType="menuVO" resultType="menuVO">
-<<<<<<< HEAD
-		select * from membermenu where memberID=#{memberID}
-=======
 		select * from membermenu where foodName=#{foodName}
->>>>>>> 2331e674f9ed2249f235f021789e1450d0031e6f
 	</select>
 	
 	<select id="membermenuList" parameterType="menuVO" resultType="menuVO">
