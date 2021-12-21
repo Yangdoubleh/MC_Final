@@ -16,6 +16,13 @@ h3{
 	font-weight: bold;
 }
 
+h5 {
+    font-size: 1.28571429em;
+    font-weight: 700;
+    line-height: 1.2857em;
+    margin: 0;
+}
+
 table{
 	width: 80%;
 	height: 150px;
@@ -56,7 +63,7 @@ table{
   position: fixed;
   top: 68px;
   right:0;
-  width: Max(200px, 20%);
+  width: Max(220px, 20%);
   bottom: 0;
   z-index: 5;
   visibility: hidden;
@@ -84,6 +91,9 @@ table{
     padding: 1rem; }    
     
 .welcome{
+	width:80%;
+	transform: translate(10%,0%);
+	display: flex;
 	font-weight: bold;
 	font-size:15px;
 	background-color: #fff ;
@@ -93,8 +103,7 @@ table{
 	margin:5px;
 	border-bottom: 5px solid rgb(255, 255, 255)}
 	.welcome a{
-	display: block;
-    margin-bottom:20px;
+    margin:20px;
     padding: 1rem;
 	}
     
@@ -138,7 +147,6 @@ table{
   margin-bottom:30px;
   border-radius: 10px;
   border:2px solid #d39a9d;
-  
 }
 
 .search_Btn{
@@ -157,12 +165,6 @@ table{
 	text-align: center;
 }
 
-h5 {
-    font-size: 1.28571429em;
-    font-weight: 700;
-    line-height: 1.2857em;
-    margin: 0;
-}
 
 .card-form{
  
@@ -274,6 +276,8 @@ h5 {
 	text-align: center;
 }
 
+<<<<<<< HEAD
+=======
 .send_Btn{
 	margin-top:10px;
 	width: 100%;
@@ -377,3 +381,4 @@ input:focus{
 :-moz-placeholder { /* Firefox 18- */
     color: #d4d4d4;
 }  
+>>>>>>> a9494f34b61dedf2897ac581a86633d468291ad2

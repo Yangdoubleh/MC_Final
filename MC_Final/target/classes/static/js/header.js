@@ -15,4 +15,8 @@ let navWrapper = document.querySelector(".nav__wrapper");
 		this.setAttribute("aria-expanded", "true");
 	}
 });
+<<<<<<< HEAD
+
+=======
 });
+>>>>>>> a9494f34b61dedf2897ac581a86633d468291ad2

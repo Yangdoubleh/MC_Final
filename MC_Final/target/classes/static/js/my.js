@@ -1,6 +1,12 @@
 $(document).ready(function() {
 
 	const id=$.cookie("id");
+	if(id){
+		$("#idSpan").html(id+"님 <br> 환영합니다!");
+		$("#myId").html(id);
+	}
+	
+	
 	
 	$("#memberInsertBtn").click(function() {
 		const id = $("#id").val();
@@ -8,19 +14,18 @@ $(document).ready(function() {
 		const email = $("#email").val();
 		const nickname = $("#nickname").val();
 		const age = $("#age").val();
-		
+
 		//alert(id+":"+pw);
 		
 		$.post("../memberInsert", { id, pw, email, nickname, age }, function(data) {
 			alert(data);
-			location.href="index.html";
 		});	
 	});
-	
 	
 	$("#loginBtn").click(function() {
 		const id = $("#id").val();
 		const pw = $("#pw").val();
+		
 		
 		 if(id =='') {
             alert("아이디를 입력하세요");
@@ -34,16 +39,28 @@ $(document).ready(function() {
             return false;
         } 
         
-		$.post("login",{id,pw},function(data){
-			console.log(data);
-			if(data!="fail"){
-				const id=data;
-				$.cookie("id",id);
-				//로그인 성공하면 메인페이지로, 실패하면 이 화면에서 그대로
+		$.post('../login', { id, pw }, function(data) {
+			data = JSON.parse(data);
+			if (data.id) {
 				location.href="main.html";
-			} 
+				$("#idSpan").html(id+"님 <br> 환영합니다!");
+				$.cookie("id", data.id);
+			} else{
+				alert("아이디 또는 비밀번호를 다시 확인해주세요.");
+			}
 		});
 	});
 	
+	$("#logoutBtn").click(function() {
+		$.post('../logout', {}, function(data) {
+			data = JSON.parse(data);
+			if (data.msg == "ok") {
+				$.removeCookie("id");
+				location.href="index.html";
+			} else {
+				alert(data.msg);
+			}
+		});
+	})
 	
 });

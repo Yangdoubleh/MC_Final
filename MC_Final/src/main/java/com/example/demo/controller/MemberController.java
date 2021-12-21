@@ -92,17 +92,12 @@ public class MemberController {
 	public String login(HttpSession session,MemberVO memberVO) {
 		//System.out.println(memberVO);	
 		JSONObject jo=new JSONObject();
-<<<<<<< HEAD
-=======
-		
 		if(memberVO.getId() ==null || memberVO.getId().equals("") || 
 				memberVO.getPw()==null || memberVO.getPw().equals("")) {
 
 			jo.put("msg", "id와 pw는 필수입니다");
 			return jo.toJSONString();
 		}
-		
->>>>>>> a9494f34b61dedf2897ac581a86633d468291ad2
 		try {
 			MemberVO vo=memberService.login(memberVO);
 			if(vo!=null) {

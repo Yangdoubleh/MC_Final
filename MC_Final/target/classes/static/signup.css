@@ -27,6 +27,18 @@ body {
   border-radius: 15px;
 }
 
+.deleteForm {
+  position:absolute;
+  max-width: 70%;
+  width:100%;
+  background-color:#FFFFFF;
+  text-align:center;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  border-radius: 15px;
+}
+
 .joinForm h2 {
   text-align: center;
   color: #d39a9d;
@@ -41,13 +53,23 @@ body {
 
 
 .id {
-  width: 100%;
+  width: 65%;
   border:none;
   outline:none;
   color: #636e72;
   font-size:16px;
   height:25px;
   background: none;
+}
+
+.id2 {
+  width: 100%;
+  border:none;
+  outline:none;
+  background-color:lightgray;
+  color: #000000;
+  font-size:16px;
+  height:25px;
 }
 
 .pw {
@@ -88,6 +110,7 @@ body {
 	border:1px solid #ccc;
 	border-radius:4px;
 	box-sizing:border-box;
+	background-color:#fff;
 	color: #636e72;
     font-size:12px;
 }
@@ -115,4 +138,19 @@ body {
 
 .btn:hover {
   background-position: right;
+}
+
+.check_Btn{
+	position:relative;
+	width:30%;
+	height:35px;
+	background-color: #d39a9d ;
+	color: #fff;
+	font-size:15px;
+	border-radius:10px;
+	border:2px solid #d39a9d;
+	display:inline-block;
+	cursor:pointer;
+	text-decoration:none;
+	text-align: center;
 }

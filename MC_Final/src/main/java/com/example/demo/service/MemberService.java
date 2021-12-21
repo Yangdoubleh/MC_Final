@@ -1,11 +1,6 @@
 package com.example.demo.service;
 
-<<<<<<< HEAD
-=======
-
 import java.util.List;
-
->>>>>>> a9494f34b61dedf2897ac581a86633d468291ad2
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 
