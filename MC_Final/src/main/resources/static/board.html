@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="styles/reset.min.css" />
 <link rel="stylesheet" href="styles/style.css" />
 <link rel="stylesheet" href="styles/header.css" />
+<script src="js/header.js"></script>
 </head>
 <body>
 	<!-- Header Start -->
@@ -22,7 +23,8 @@
 				<button class="nav__toggle" type="button">
 					<i class="bi bi-justify"></i>
 				</button>
-				<ul class="nav__wrapper">
+				
+								<ul class="nav__wrapper">
 					<li class="welcome">aaa님 환영합니다!</li>
 					<li class="nav__item"><a href="main.html"><i
 							class="bi bi-house-fill" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;
@@ -40,10 +42,62 @@
 				</ul>
 			</nav>
 		</div>
+		
 	</header>
 	<!-- Header End -->
-	<div></div>
-
-	<script src="js/header.js"></script>
+		<br><br><br>
+<div class="container">
+<table align="center" border="0"  width="80%"  class="table table-striped">
+  <tr height="10" align="center"  >
+     <th >글번호</th>
+     <th >작성자</th>              
+     <th >제목</th>
+     <th >작성일</th>
+  </tr>
+<c:choose>
+  <c:when test="${boardList ==null }" >
+    <tr height="10">
+      <td colspan="4">
+         <p align="center">
+            <b><span style="font-size:9pt;">등록된 글이 없습니다.</span></b>
+        </p>
+      </td>  
+    </tr>
+  </c:when>
+  <c:when test="${boardList !=null }" >
+    <c:forEach  var="article" items="${boardList }" varStatus="articleNum" >
+     <tr align="center">
+	<td width="5%">${articleNum.count}</td>
+	<td width="10%">${article.memberID }</td>
+	<td align='left'  width="35%">
+	  <span style="padding-right:30px"></span>
+	   <c:choose>
+	      <c:when test='${article.lvl > 1 }'>  
+	         <c:forEach begin="1" end="${article.lvl }" step="1">
+	              <span style="padding-left:20px"></span>    
+	         </c:forEach>
+	         <span style="font-size:12px;">[답변]</span>
+                   <a class='cls1' href="../viewArticle?articleNO=${article.no}">${article.title}</a>
+	          </c:when>
+	          <c:otherwise>
+	            <a class='cls1' href="../viewArticle?articleNO=${article.no}">${article.title }</a>
+	          </c:otherwise>
+	        </c:choose>
+	  </td>
+	  <td  width="30%">${article.writeDate}</td> 
+	</tr>
+    </c:forEach>
+     </c:when>
+    </c:choose>
+</table>
+</div>
+<!-- <a  class="cls1"  href="#"><p class="cls2">글쓰기</p></a> -->
+<center>
+<a    href="../boardWriteForm"><p class="search_Btn">글쓰기</p></a>
+</center>
+		
+		<!-- Card End -->
+	
+	
 </body>
 </html>

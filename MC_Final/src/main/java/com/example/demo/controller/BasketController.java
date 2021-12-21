@@ -23,6 +23,7 @@ public class BasketController {
 	@Autowired
 	FoodService foodService;
 	
+	
 	@RequestMapping("basketInsert")
 	@ResponseBody
 	public String basketInsert(FoodVO foodVO) {
@@ -38,6 +39,7 @@ public class BasketController {
 			}
 			if(basketService.basketSelect(menuVO)==null) {
 				basketService.basketInsert(menuVO);
+				
 				return "장바구니에 추가되었습니다.";
 			} else {
 				return "이미 장바구니에 있습니다.";

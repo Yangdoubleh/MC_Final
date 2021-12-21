@@ -25,7 +25,9 @@ table{
 
 .brand {
   font-weight: bold;
-  font-size: 20px; }
+  font-size: 20px; 
+  color:#fff;
+  }
 
 .main-form{
   margin-top:30px;

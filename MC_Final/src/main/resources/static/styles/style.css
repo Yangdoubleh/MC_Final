@@ -18,6 +18,10 @@ a {
   color: #fff;
 }
 
+a:link { color: #fff; }
+
+.sidebar:visited { color: #fff; }
+
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -54,3 +58,26 @@ body {
     display: initial;
   }
 }
+.chart {
+	
+	float: left; 
+	width: 33.33%; 
+	height: 290px; 
+	text-align: center;
+	
+	}
+	
+.chart span.title{
+	position: relative; 
+	display: block; 
+	width: 100%; 
+	text-align: center; 
+	top: 130px;
+	
+	}
+
+
+
+
+
+	
