@@ -23,11 +23,7 @@ public class MemberVO {
 	}
 
 	public void setId(String id) {
-		if(id!=null && !id.equals("")) {
-			this.id = id;
-		}else {
-			System.out.println("id를 확인하세요");
-		}
+		this.id = id;
 	}
 
 	public String getPw() {
@@ -67,7 +63,7 @@ public class MemberVO {
 		return age;
 	}
 
-	public void setAge(String phone) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 

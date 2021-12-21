@@ -8,8 +8,8 @@
 </head>
 <body>
    <script type="text/javascript">
-   		alert("${memberVO.getNickname()}님 회원가입 되셨습니다.");
-   		location.href="index.html";
+   		alert("회원정보가 수정되었습니다.");
+   		location.href="mypage.html";
    </script>
 </body>
 </html>

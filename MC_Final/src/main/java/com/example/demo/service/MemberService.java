@@ -1,7 +1,5 @@
 package com.example.demo.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -19,8 +17,24 @@ public class MemberService {
 		memberDAO.insertMember(memberVO);
 	}
 	
+	public MemberVO memberSelect(MemberVO memberVO) throws DataAccessException {
+		return memberDAO.selectMember(memberVO);
+	}
+	
+	public void memberUpdate(MemberVO memberVO) throws DataAccessException {
+		memberDAO.updateMember(memberVO);
+	}
+	
+	public void memberDelete(MemberVO memberVO) throws DataAccessException{
+		memberDAO.deleteMember(memberVO);
+	}
+	
 	public MemberVO login(MemberVO memberVO)  throws DataAccessException{
 		return memberDAO.login(memberVO);
+	}
+	
+	public MemberVO idCheck(MemberVO memberVO) throws DataAccessException{
+		return memberDAO.idCheck(memberVO);
 	}
 }
 
