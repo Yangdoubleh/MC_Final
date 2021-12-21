@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<meta charset="UTF-8" />
+<title>멀캠세끼</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="styles/reset.min.css" />
+<link rel="stylesheet" href="styles/style.css" />
+<link rel="stylesheet" href="styles/header.css" />
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	const memberID = "aaa";
+	$.post("basketList", {memberID}, function(basketList){
+		//console.log(basketList);
+		let array = [];
+		if (basketList){
+			for(var i=0; i<JSON.parse(basketList).length; i++){
+				const foodName = JSON.parse(basketList)[i].foodName;
+				const imageURL = JSON.parse(basketList)[i].imageURL;
+				const recipeURL = JSON.parse(basketList)[i].recipeURL;
+				const kcal = JSON.parse(basketList)[i].kcal;
+				const carb = JSON.parse(basketList)[i].carb;
+				const prot = JSON.parse(basketList)[i].prot;
+				const fat = JSON.parse(basketList)[i].fat;
+				$("#BasketDiv_"+i).html("<br><h2>"+foodName+"</h2><br><img src='"+imageURL+"'><button id='recipeBtn"+i+"'>레시피 보기</button> <button id='deleteBtn"+i+"'>삭제하기</button><h4>칼로리 : "+kcal+" kcal</h4><h4>탄수화물 : "+carb+" g</h4><h4>단백질 : "+prot+" g</h4><h4>지방 : "+fat+" g</h4><br>");
+				document.getElementById('BasketDiv_'+i).style.border='3px solid #0A0A0A';
+				document.getElementById('BasketDiv_'+i).style.background='#f5f5f5';
+				document.getElementById('BasketDiv_'+i).style.width='380px';
+				document.getElementById('BasketDiv_'+i).style.height='auto';
+			}
+		}
+		
+		//레시피 보기 버튼 기능
+		$(document).on('click',"#recipeBtn0",function(){
+			const foodName = JSON.parse(basketList)[0].foodName;
+			const imageURL = JSON.parse(basketList)[0].imageURL;
+			const recipeURL = JSON.parse(basketList)[0].recipeURL;
+			const kcal = JSON.parse(basketList)[0].kcal;
+			const carb = JSON.parse(basketList)[0].carb;
+			const prot = JSON.parse(basketList)[0].prot;
+			const fat = JSON.parse(basketList)[0].fat;
+			$.post("menuInsert",{foodName, recipeURL, imageURL, kcal, carb, prot, fat}, function(msg){
+				alert(msg);
+			});
+			window.open(recipeURL);
+		});
+		$(document).on('click',"#recipeBtn1",function(){
+			const foodName = JSON.parse(basketList)[1].foodName;
+			const imageURL = JSON.parse(basketList)[1].imageURL;
+			const recipeURL = JSON.parse(basketList)[1].recipeURL;
+			const kcal = JSON.parse(basketList)[1].kcal;
+			const carb = JSON.parse(basketList)[1].carb;
+			const prot = JSON.parse(basketList)[1].prot;
+			const fat = JSON.parse(basketList)[1].fat;
+			$.post("menuInsert",{foodName, recipeURL, imageURL, kcal, carb, prot, fat}, function(msg){
+				alert(msg);
+			});
+			window.open(recipeURL);
+		});
+		$(document).on('click',"#recipeBtn2",function(){
+			const foodName = JSON.parse(basketList)[2].foodName;
+			const imageURL = JSON.parse(basketList)[2].imageURL;
+			const recipeURL = JSON.parse(basketList)[2].recipeURL;
+			const kcal = JSON.parse(basketList)[2].kcal;
+			const carb = JSON.parse(basketList)[2].carb;
+			const prot = JSON.parse(basketList)[2].prot;
+			const fat = JSON.parse(basketList)[2].fat;
+			$.post("menuInsert",{foodName, recipeURL, imageURL, kcal, carb, prot, fat}, function(msg){
+				alert(msg);
+			});
+			window.open(recipeURL);
+		});
+		$(document).on('click',"#recipeBtn3",function(){
+			const foodName = JSON.parse(basketList)[3].foodName;
+			const imageURL = JSON.parse(basketList)[3].imageURL;
+			const recipeURL = JSON.parse(basketList)[3].recipeURL;
+			const kcal = JSON.parse(basketList)[3].kcal;
+			const carb = JSON.parse(basketList)[3].carb;
+			const prot = JSON.parse(basketList)[3].prot;
+			const fat = JSON.parse(basketList)[3].fat;
+			$.post("menuInsert",{foodName, recipeURL, imageURL, kcal, carb, prot, fat}, function(msg){
+				alert(msg);
+			});
+			window.open(recipeURL);
+		});
+		$(document).on('click',"#recipeBtn4",function(){
+			const foodName = JSON.parse(basketList)[4].foodName;
+			const imageURL = JSON.parse(basketList)[4].imageURL;
+			const recipeURL = JSON.parse(basketList)[4].recipeURL;
+			const kcal = JSON.parse(basketList)[4].kcal;
+			const carb = JSON.parse(basketList)[4].carb;
+			const prot = JSON.parse(basketList)[4].prot;
+			const fat = JSON.parse(basketList)[4].fat;
+			$.post("menuInsert",{foodName, recipeURL, imageURL, kcal, carb, prot, fat}, function(msg){
+				alert(msg);
+			});
+			window.open(recipeURL);
+		});
+
+		//장바구니 삭제 버튼 기능
+		$("#deleteBtn0").click(function(){
+			var result = confirm("정말 삭제 하시겠습니까?");
+			if(result){
+				const foodName = JSON.parse(basketList)[0].foodName;
+				$.post("deleteBasket",{foodName},function(msg){
+					alert(msg);
+					location.href="basket.html";
+				});
+			} else{
+				//alert();
+			}
+		});
+		$("#deleteBtn1").click(function(){
+			var result = confirm("정말 삭제 하시겠습니까?");
+			if(result){
+				const foodName = JSON.parse(basketList)[1].foodName;
+				$.post("deleteBasket",{foodName},function(msg){
+					alert(msg);
+					location.href="basket.html";
+				});
+			} else{
+				//alert();
+			}
+		});
+		$("#deleteBtn2").click(function(){
+			var result = confirm("정말 삭제 하시겠습니까?");
+			if(result){
+				const foodName = JSON.parse(basketList)[2].foodName;
+				$.post("deleteBasket",{foodName},function(msg){
+					alert(msg);
+					location.href="basket.html";
+				});
+			} else{
+				//alert();
+			}
+		});
+		$("#deleteBtn3").click(function(){
+			var result = confirm("정말 삭제 하시겠습니까?");
+			if(result){
+				const foodName = JSON.parse(basketList)[3].foodName;
+				$.post("deleteBasket",{foodName},function(msg){
+					alert(msg);
+					location.href="basket.html";
+				});
+			} else{
+				//alert();
+			}
+		});
+		$("#deleteBtn4").click(function(){
+			var result = confirm("정말 삭제 하시겠습니까?");
+			if(result){
+				const foodName = JSON.parse(basketList)[4].foodName;
+				$.post("deleteBasket",{foodName},function(msg){
+					alert(msg);
+					location.href="basket.html";
+				});
+			} else{
+				//alert();
+			}
+		});
+		
+	});
+});
+</script>
+<body>
+	<!-- Header Start -->
+	<header class="site-header">
+		<div class="wrapper site-header__wrapper">
+			<nav class="nav"></nav>
+			<a href="#" class="brand">멀캠세끼</a>
+			<nav class="nav">
+				<a href="chatbot.html" class="chat_Btn" type="button"><i
+					class="bi bi-chat-right-dots"></i></a>
+				<button class="nav__toggle" type="button">
+					<i class="bi bi-justify"></i>
+				</button>
+				<ul class="nav__wrapper">
+					<li class="welcome">aaa님 환영합니다!</li>
+					<li class="nav__item"><a href="main.html"><i
+							class="bi bi-house-fill" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;
+							홈</a></li>
+					<li class="nav__item"><a href="menu.html"><i
+							class="bi bi-layout-text-window-reverse" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;
+							나의 식단</a></li>
+					<li class="nav__item2"><a href="basket.html"><i class="bi bi-basket"
+							style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;장바구니</a></li>
+					<br>
+					<li class="nav__item"><a href="mypage.html"><i
+							class="bi bi-person-fill" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;마이페이지</a></li>
+					<li class="nav__item"><a href="index.html" id="logoutBtn"><i
+							class="bi bi-door-open" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;로그아웃</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<!-- Header End -->
+	<div class="main-form">
+		<br>
+		<br>
+		<h5>장바구니 보기</h5>
+		<br>
+		<div id="BasketDiv_0">장바구니에 들어있는 음식이 없습니다.</div><br> <br>
+		<div id="BasketDiv_1"></div><br> <br>
+		<div id="BasketDiv_2"></div><br> <br>
+		<div id="BasketDiv_3"></div><br> <br>
+		<div id="BasketDiv_4"></div>
+	</div>
+
+	<script src="js/header.js"></script>
+</body>
+</html>

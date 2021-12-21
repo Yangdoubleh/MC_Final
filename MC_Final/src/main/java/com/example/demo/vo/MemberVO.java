@@ -2,6 +2,7 @@ package com.example.demo.vo;
 
 public class MemberVO {
 	
+
 	private String id,pw,pwd,email,nickname,age;	
 
 	public MemberVO(String id, String pw,String pwd, String email, String nickname, String age) {

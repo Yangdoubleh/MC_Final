@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>회원정보 수정</title>
+<link href="signup.css" rel="stylesheet">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script type="text/javascript" src="../js/my.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		const id = $.cookie("id");
+		$.post("memberSelect",{ id },function(member){
+			const email = JSON.parse(member).email;
+			const nickname = JSON.parse(member).nickname;
+			const age = JSON.parse(member).age;
+			$("#id").val(id);
+			$("#nickname").val(nickname);
+			$("#email").val(email);
+		});
+	});
+
+	function check() {
+		if ($("#pw").val() != $("#pw_check").val()) {
+			alert("비밀번호를 다시 확인해주세요");
+			$("#pw").val("");
+			$("#pw_check").val("");
+			$("#pw").focus();
+			return false;
+		} 
+	}
+</script>
+
+</head>
+<body>
+	<form action="memberUpdate" method="post" class="joinForm" onsubmit="return check()">
+
+		<div>
+			<h2>&nbsp;회원정보 수정</h2>
+		</div>
+		<div class="textForm">
+			<input id="id" name="id" type="text" class="id2" placeholder="아이디" readonly>
+		</div>
+		<div class="textForm">
+			<input id="pw" name="pw" type="password" class="pw" placeholder="비밀번호" required>
+		</div>
+		<div class="textForm">
+			<input id="pw_check" type="password" class="pw" placeholder="비밀번호 확인" required>
+		</div>
+		<div class="textForm">
+			<input id="email" name="email" type="text" class="email" placeholder="이메일" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+com" required>
+		</div>
+		<div class="textForm">
+			<input id="nickname" name="nickname" type="text" class="nickname" placeholder="닉네임" required>
+		</div>
+		<label for="age" style="color: #636e72; font-size: 16px;">나이 &nbsp;</label> 
+		<select id="age" name="age" class="age" required>
+			<option value="0">--- 연령대를 선택하세요 ---</option>
+			<option value="1">10대</option>
+			<option value="2">20대</option>
+			<option value="3">30대</option>
+			<option value="4">40대</option>
+			<option value="5">50대</option>
+			<option value="6">60대</option>
+		</select> 
+		<input type="submit"  id="memberUpdateBtn" class="btn" value="수정하기" /> 
+		<input type="button" onclick="location.href='mypage.html'" class="btn" value="뒤로가기" />
+
+	</form>
+</body>
+</html>
