@@ -17,6 +17,9 @@ let navWrapper = document.querySelector(".nav__wrapper");
 });
 <<<<<<< HEAD
 
+<<<<<<< HEAD
 =======
 });
 >>>>>>> a9494f34b61dedf2897ac581a86633d468291ad2
+=======
+>>>>>>> soohyun1
