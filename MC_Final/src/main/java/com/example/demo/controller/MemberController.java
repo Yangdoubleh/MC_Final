@@ -6,6 +6,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -45,6 +46,7 @@ public class MemberController {
 		
 		if(memberVO.getId() ==null || memberVO.getId().equals("") || 
 				memberVO.getPw()==null || memberVO.getPw().equals("")) {
+
 			jo.put("msg", "id와 pw는 필수입니다");
 			return jo.toJSONString();
 		}
@@ -52,7 +54,7 @@ public class MemberController {
 		try {
 			MemberVO vo=memberService.login(memberVO);
 			if(vo!=null) {
-				session.setAttribute("memberVO", memberVO);			
+				session.setAttribute("memberVO", memberVO);	
 				jo.put("id", vo.getId());
 				
 			}else {
@@ -66,5 +68,3 @@ public class MemberController {
 		return jo.toJSONString();
 	}
 }
-
-
