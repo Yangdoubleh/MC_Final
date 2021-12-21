@@ -17,7 +17,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-  
+    <script type="text/javascript" src="js/my.js"></script>
 <script type="text/javascript">
  
   function backToList(){
@@ -25,9 +25,9 @@
   }
   
 $(document).ready(function(){
-	const board_id=$.cookie('board_id');
+	const board_id=$.cookie('memberID');
 	if(board_id){
-		$("#id").val(board_id);		
+		$("#memberID").val(board_id);		
 	}else{
 		//alert("로그인 먼저 하세요");
 		window.close();
@@ -75,7 +75,7 @@ background-color: rgba(255,0,0,0.1);
     <table class="table table-border">
       <tr>
 					<td > 작성자 : </td>
-					<td colspan=2  ><input type="text" size="50" maxlength="100"  name="memberID" value="aaa"
+					<td colspan=2  ><input type="text" size="50" maxlength="100"  name="memberID" id="memberID"
 					readonly style="background:lightgray" /> </td>
 			</tr>
 	     <tr>

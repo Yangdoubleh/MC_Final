@@ -10,14 +10,47 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.service.BasketService;
+import com.example.demo.service.BoardService;
+import com.example.demo.service.MemberMenuService;
 import com.example.demo.service.MemberService;
 import com.example.demo.vo.MemberVO;
+import com.example.demo.vo.MenuVO;
+import com.example.demo.vo.BoardVO;
 
 @Controller
 public class MemberController {
 	
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	BasketService basketService;
+	
+	@Autowired
+	MemberMenuService memberMenuService;
+	
+	@Autowired
+	BoardService boardService;
+	
+	@RequestMapping("memberDelete")
+	@ResponseBody
+	public void memberDelete(HttpSession session, MemberVO memberVO) {
+		System.out.println(memberVO);
+		try {
+			MenuVO menuVO = new MenuVO();
+			BoardVO boardVO = new BoardVO();
+			menuVO.setMemberID(memberVO.getMemberID());
+			boardVO.setMemberID(memberVO.getMemberID());
+			basketService.deleteAllBasket(menuVO);
+			memberMenuService.deleteAllMemberMenu(menuVO);
+			boardService.deleteAllboard(boardVO);
+			memberService.memberDelete(memberVO);
+			session.invalidate();
+		}catch(DataAccessException e) {
+			System.out.println(e.getMessage());
+		}
+	}
 	
 	@RequestMapping("memberInsert")
 	public String memberInsert(MemberVO memberVO) {
@@ -36,8 +69,8 @@ public class MemberController {
 		try {
 			JSONObject jo = new JSONObject();
 			MemberVO memberSelect = memberService.memberSelect(memberVO);
-			jo.put("id", memberSelect.getId());
-			jo.put("pw", memberSelect.getPw());
+			jo.put("memberID", memberSelect.getMemberID());
+			jo.put("password", memberSelect.getPassword());
 			jo.put("email", memberSelect.getEmail());
 			jo.put("nickname", memberSelect.getNickname());
 			jo.put("age", memberSelect.getAge());
@@ -59,23 +92,6 @@ public class MemberController {
 		}
 	}
 	
-	@RequestMapping("memberDelete")
-	@ResponseBody
-	public String memberDelete(HttpSession session, MemberVO memberVO) {
-		JSONObject jo=new JSONObject();
-		try {
-			memberService.memberDelete(memberVO);
-			session.invalidate();
-			jo.put("msg", "ok");
-			
-		}catch(Exception e) {
-			jo.put("msg", e.getMessage());
-		}
-		
-		return jo.toJSONString();
-	}
-	
-	
 	@RequestMapping("idCheck")
 	@ResponseBody
 	public String idCheck(MemberVO memberVO) {		
@@ -96,7 +112,7 @@ public class MemberController {
 			MemberVO vo=memberService.login(memberVO);
 			if(vo!=null) {
 				session.setAttribute("memberVO", memberVO);	
-				jo.put("id", vo.getId());
+				jo.put("memberID", vo.getMemberID());
 				
 			}else {
 				jo.put("msg", "id와 pw를 확인하세요");

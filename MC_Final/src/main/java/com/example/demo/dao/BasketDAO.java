@@ -16,5 +16,6 @@ public interface BasketDAO {
 	public MenuVO selectBasket(MenuVO menuVO) throws DataAccessException;
 	public List<MenuVO> basketList(MenuVO menuVO) throws DataAccessException;
 	public void deleteBasket(MenuVO menuVO) throws DataAccessException;
+	public void deleteAllBasket(MenuVO menuVO) throws DataAccessException;
 
 }

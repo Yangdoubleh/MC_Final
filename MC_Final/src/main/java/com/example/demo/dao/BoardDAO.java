@@ -16,5 +16,7 @@ public interface BoardDAO {
 	public BoardVO viewArticle(int no) throws DataAccessException;
 	public void delete(BoardVO boardVO) throws DataAccessException;
 	public void update(BoardVO boardVO) throws DataAccessException;
-
+	public BoardVO selectArticleID(BoardVO boardVO) throws DataAccessException;
+	public void deleteAllboard(BoardVO boardVO) throws DataAccessException;
+ 
 }

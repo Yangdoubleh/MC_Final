@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -52,7 +53,7 @@ public class BoardController {
 			if (!fileName.equals("")) {
 				 boardVO.setFileName(fileName); 
 				 try {
-					file.transferTo(new File("C:\\0AI\\5_backend\\STS\\final\\MC_Final\\src\\main\\webapp\\uploadImg" + fileName));
+					file.transferTo(new File("C:\\Users\\user\\Desktop\\코딩\\final\\MC_Final\\src\\main\\webapp\\uploadImg\\" + fileName));
 				} catch (IllegalStateException | IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -102,10 +103,21 @@ public class BoardController {
 
 	   @RequestMapping("delete")
 	   @ResponseBody
-	   public String delete(BoardVO BoardVO,HttpSession session) {
+	   public String delete(BoardVO boardVO,HttpSession session) {
+		   BoardVO boardID = boardService.selectArticleID(boardVO);
 		   BoardVO parentVO=(BoardVO) session.getAttribute("article");
 		  // System.out.println("delete호출");
-		   boardService.delete(BoardVO);
-			return "boardList"; 
+		   boardService.delete(boardVO);
+			return "게시글 삭제 완료"; 
 }
+	   @RequestMapping("selectArticleID")
+	   @ResponseBody
+	   public String selectArticleID(BoardVO boardVO , @CookieValue String memberID,@CookieValue("memberID") String id) {
+		   BoardVO boardID = boardService.selectArticleID(boardVO);
+		   if (id.equals(boardID.getMemberID())) {
+			   return "ok";
+		   } else {
+			   return "다른 사람의 게시글은 수정이 불가능 합니다.";
+		   }
+	   }
 }

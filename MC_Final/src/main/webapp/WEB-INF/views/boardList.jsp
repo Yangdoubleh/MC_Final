@@ -27,11 +27,13 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/my.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
  <style>
  
  
-   .cls1 {text-decoration:none;}
+   .cls1 {text-decoration:none;
+   color: #337ab7!important;}
    .cls2{text-align:center; font-size:30px;}
  
 
@@ -87,91 +89,37 @@ body {
 background-color: rgba(255,0,0,0.1);
 }
 
-
-/*
-.table-striped{
-border-collapse: separate;
-  border-spacing: 1px;
-  text-align: center;
-  line-height: 1.5;
-
-
-}
-.table-striped th {
-  width: 155px;
-  padding: 10px;
-  font-weight: bold;
-  vertical-align: top;
-  color: #fff;
-  background: #d39a9d ;
-  text-align: center;
-}
-.table-striped td {
-  width: 155px;
-  padding: 10px;
-  vertical-align: top;
-  border-bottom: 1px solid #ccc;
-  background: #eee;
-} */
   </style>
   <meta charset="UTF-8">
   <title>글목록창</title>
 </head>
-<script>
-	function fn_articleForm(url){
-	  var id=getCookie("id");		
-	  if(id){
-                document.cookie="board_id="+id;
-	    location.href=url;
-	  }else{
-	    alert("로그인 후 글쓰기가 가능합니다.")
-	    window.close();
-	  }
-	}
-	
-	function getCookie(cname) {
-		  let name = cname + "=";
-		  let decodedCookie = decodeURIComponent(window.opener.document.cookie);
-		  let ca = decodedCookie.split(';');
-		  for(let i = 0; i <ca.length; i++) {
-		    let c = ca[i];
-		    while (c.charAt(0) == ' ') {
-		      c = c.substring(1);
-		    }
-		    if (c.indexOf(name) == 0) {
-		      return c.substring(name.length, c.length);
-		    }
-		  }
-		  return "";
-		}
-	
-</script>
 
-<body>	<!-- Header Start -->
+<body>	
+	<!-- Header Start -->
 	<header class="site-header">
 		<div class="wrapper site-header__wrapper">
 			<nav class="nav"></nav>
-			<a href="#" class="brand">멀캠세끼</a>
+			<a href="main.html" class="brand sidebar">멀캠세끼</a>
 			<nav class="nav">
-				<a href="chatbot.html" class="chat_Btn" type="button"><i
+				<a href="voice_chatbot.html"  class="chat_Btn" type="button"><i
 					class="bi bi-chat-right-dots"></i></a>
 				<button class="nav__toggle" type="button">
 					<i class="bi bi-justify"></i>
 				</button>
 				<ul class="nav__wrapper">
-					<li class="welcome">aaa님 환영합니다!</li>
-					<li class="nav__item"><a class="sidebar" type="button" href="main.html"><i
+					<span id="idSpan" class="welcome"><li> 환영합니다!</li></span>
+					<li class="nav__item"><a class="sidebar" href="main.html"><i
 							class="bi bi-house-fill" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;
 							홈</a></li>
-					<li class="nav__item"><a class="sidebar" href="board.html"><i
+					<li class="nav__item"><a class="sidebar" href="menu.html"><i
 							class="bi bi-layout-text-window-reverse" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;
 							나의 식단</a></li>
 					<li class="nav__item2"><a class="sidebar" href="basket.html"><i class="bi bi-basket"
 							style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;장바구니</a></li>
 					<br>
-					<li class="nav__item"><a  class="sidebar" href="mypage.html"><i
+					<li class="nav__item"><a class="sidebar" href="mypage.html"><i
 							class="bi bi-person-fill" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;마이페이지</a></li>
-					<li class="nav__item"><a class="sidebar" href="index.html" id="logoutBtn"><i
+					<li class="nav__item"><a class="sidebar" id="logoutBtn" href="index.html"><i
 							class="bi bi-door-open" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;로그아웃</a></li>
 				</ul>
 			</nav>
@@ -212,10 +160,10 @@ border-collapse: separate;
 	              <span style="padding-left:20px"></span>    
 	         </c:forEach>
 	         <span style="font-size:12px;">[답변]</span>
-                   <a class='cls1' href="../viewArticle?articleNO=${article.no}">${article.title}</a>
+                   <a class='cls1' href="../viewArticle?articleNO=${article.NO}">${article.title}</a>
 	          </c:when>
 	          <c:otherwise>
-	            <a class='cls1' href="../viewArticle?articleNO=${article.no}">${article.title }</a>
+	            <a class='cls1' href="../viewArticle?articleNO=${article.NO}">${article.title }</a>
 	          </c:otherwise>
 	        </c:choose>
 	  </td>
@@ -227,10 +175,9 @@ border-collapse: separate;
 </table>
 </div>
 <center>
-<a href="../boardWriteForm"><p class="search_Btn">글쓰기</p></a>
+<a href="../boardWriteForm"><p class="search_Btn")">글쓰기</p></a>
 </center>
 
-	<script src="js/circ.js"></script>
 	<script src="js/header.js"></script>
 </body>
 </html>

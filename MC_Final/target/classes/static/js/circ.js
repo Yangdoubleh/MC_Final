@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-	const memberID = "aaa";
+	const memberID = $.cookie("memberID");
 			
 	$.post("updateChart1", {memberID}, function(msg){
 		

@@ -35,4 +35,12 @@ public class BoardService {
 		boardDAO.delete(boardVO);
 		
 	}
+	
+	public BoardVO selectArticleID(BoardVO boardVO) {
+		return boardDAO.selectArticleID(boardVO);
+	}
+	
+	public void deleteAllboard(BoardVO boardVO) throws DataAccessException{
+		boardDAO.deleteAllboard(boardVO);
+	}
 }

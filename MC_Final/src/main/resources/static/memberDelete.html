@@ -15,10 +15,10 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-	const id = $.cookie("id");
+	const memberID = $.cookie("memberID");
 	$("#memberDeleteBtn").click(function(){
-		$.post("memberDelete",{ id },function(member){
-			$.removeCookie("id");
+		$.post("memberDelete",{ memberID },function(){
+			$.removeCookie("memberID");
 			alert("탈퇴 되었습니다.");
 			location.href="index.html";
 		});
@@ -28,7 +28,7 @@ $(document).ready(function(){
 
 </head>
 <body>
-	<form action="memberDelete" method="post" class="deleteForm">
+	<div class="deleteForm">
 
 		<div>
 			<h2>회원탈퇴</h2>
@@ -37,6 +37,6 @@ $(document).ready(function(){
 		<input type="submit" id="memberDeleteBtn" class="btn" value="탈퇴하기" />
 		<input type="button" onclick="location.href='mypage.html'" class="btn" value="취소하기" />
 
-	</form>
+	</div>
 </body>
 </html>

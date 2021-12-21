@@ -10,7 +10,7 @@
 	</insert>
 	
 	<select id="selectBasket" parameterType="menuVO" resultType="menuVO">
-		select * from basket where foodName=#{foodName}
+		select * from basket where foodName=#{foodName} and memberID=#{memberID}
 	</select>
 	
 	<select id="basketList" parameterType="menuVO" resultType="menuVO">
@@ -18,7 +18,11 @@
 	</select>
 	
 	<delete id="deleteBasket" parameterType="menuVO">
-		delete from basket where foodName=#{foodName}
+		delete from basket where foodName=#{foodName} and memberID=#{memberID}
 	</delete>
-		
+	
+	<delete id="deleteAllBasket" parameterType="menuVO">
+		delete from basket where memberID=#{memberID}
+	</delete>
+	
 </mapper>  

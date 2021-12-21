@@ -14,26 +14,31 @@
 <script type="text/javascript" src="../js/my.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		const id = $.cookie("id");
-		$.post("memberSelect",{ id },function(member){
+		const memberID = $.cookie("memberID");
+		$.post("memberSelect",{ memberID },function(member){
 			const email = JSON.parse(member).email;
 			const nickname = JSON.parse(member).nickname;
 			const age = JSON.parse(member).age;
-			$("#id").val(id);
+			$("#memberID").val(memberID);
 			$("#nickname").val(nickname);
 			$("#email").val(email);
 		});
 	});
 
 	function check() {
-		if ($("#pw").val() != $("#pw_check").val()) {
+		if ($("#password").val() != $("#pw_check").val()) {
 			alert("비밀번호를 다시 확인해주세요");
-			$("#pw").val("");
+			$("#password").val("");
 			$("#pw_check").val("");
-			$("#pw").focus();
+			$("#password").focus();
 			return false;
-		} 
+		} else if ($("#age").val()==0) {
+			alert("나이를 설정해주세요");
+			$("#age").focus();
+			return false;
+		}
 	}
+	
 </script>
 
 </head>
@@ -44,10 +49,10 @@
 			<h2>&nbsp;회원정보 수정</h2>
 		</div>
 		<div class="textForm">
-			<input id="id" name="id" type="text" class="id2" placeholder="아이디" readonly>
+			<input id="memberID" name="memberID" type="text" class="id2" placeholder="아이디" readonly>
 		</div>
 		<div class="textForm">
-			<input id="pw" name="pw" type="password" class="pw" placeholder="비밀번호" required>
+			<input id="password" name="password" type="password" class="pw" placeholder="비밀번호" required>
 		</div>
 		<div class="textForm">
 			<input id="pw_check" type="password" class="pw" placeholder="비밀번호 확인" required>

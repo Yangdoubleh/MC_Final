@@ -3,11 +3,11 @@ package com.example.demo.vo;
 public class MemberVO {
 	
 
-	private String id,pw,pwd,email,nickname,age;	
+	private String memberID,password,pwd,email,nickname,age;	
 
-	public MemberVO(String id, String pw,String pwd, String email, String nickname, String age) {
-		setId(id);
-		setPw(pw);
+	public MemberVO(String memberID, String password,String pwd, String email, String nickname, String age) {
+		setMemberID(memberID);
+		setPassword(password);
 		setPwd(pwd);
 		setNickname(nickname);
 		setEmail(email);
@@ -19,20 +19,20 @@ public class MemberVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getId() {
-		return id;
+	public String getMemberID() {
+		return memberID;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setMemberID(String memberID) {
+		this.memberID = memberID;
 	}
 
-	public String getPw() {
-		return pw;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPw(String pw) {		
-		this.pw = pw;
+	public void setPassword(String password) {		
+		this.password = password;
 	}
 
 	public String getPwd() {
@@ -70,7 +70,7 @@ public class MemberVO {
 
 	@Override
 	public String toString() {
-		return "MemberVO [id=" + id + ", pw=" + pw + ", pwd=" + pwd + ", email=" + email
+		return "MemberVO [memberID=" + memberID + ", password=" + password + ", pwd=" + pwd + ", email=" + email
 				+ ", nickname=" + nickname + ", age=" + age + "]";
 	}
 }

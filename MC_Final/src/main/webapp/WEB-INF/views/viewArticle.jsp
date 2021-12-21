@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/my.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
  
    <title>글보기</title>
@@ -76,7 +77,6 @@ background-color: rgba(255,0,0,0.1);
  
  
    </style>
-   <script  src="http://code.jquery.com/jquery-latest.min.js"></script> 
 
  
  <script type="text/javascript">
@@ -85,12 +85,16 @@ background-color: rgba(255,0,0,0.1);
   }
 
 	 function fn_enable(){
-		 document.getElementById("i_title").disabled=false;
-		 document.getElementById("i_content").disabled=false;
-		// document.getElementById("i_imageFileName").disabled=false;
-		/*  document.getElementById("tr_btn_modify").style.display="block";
-		 document.getElementById("tr_file_upload").style.display="block";
-		 document.getElementById("tr_btn").style.display="none"; */
+		 const NO = $("#articleNo").val();
+		 $.post("selectArticleID", {NO}, function(msg){
+			 console.log(msg);
+			if(msg=="ok") {
+				 document.getElementById("i_title").disabled=false;
+				 document.getElementById("i_content").disabled=false;
+			} else {
+				alert(msg);
+			}
+		 });
 	 }
 	 
 	 function fn_modify_article(obj){
@@ -140,19 +144,30 @@ background-color: rgba(255,0,0,0.1);
  	$(document).ready(function(){
  		$("#updateArticleBtn").click(function(){
  			
+ 			const title=$("#i_title").val();
  			const content=$("#i_content").val();
- 			const no=$("#articleNo").val();
+ 			const NO=$("#articleNo").val();
  			
  			
- 			$.post("../updateArticle",{content,no},function(data){
+ 			$.post("../updateArticle",{title, content,NO},function(data){
  				alert(data);
+ 				location.reload();
  			})
  		});
- 		$("#deleteBtn").click(function () {
- 			const no=$("#articleNo").val();
-			$.post("../delete",{no},function(){
-				alert("글이 삭제되었습니다");
-			});
+ 		$("#deleteBtn").click(function (msg) {		
+ 			const memberID=$.cookie("memberID");
+ 			if(memberID==$("#i_ID").val()){
+	 			var result = confirm("정말 삭제 하시겠습니까?");
+				if(result){
+					const NO=$("#articleNo").val();
+					$.post("../delete",{NO},function(msg){
+						alert(msg);
+						location.href="boardList";
+					});
+				} else{}
+ 			} else {
+ 				alert("다른 사람의 게시글은 삭제가 불가능합니다.");
+ 			}
 		});
  	});
  </script>
@@ -168,7 +183,7 @@ background-color: rgba(255,0,0,0.1);
       글번호
    </td>
    <td colspan="3">
-    <input type="text" id="articleNo" value="${article.no}"  disabled />
+    <input type="text" id="articleNo" value="${article.NO}"  disabled />
     
    </td>
   </tr>
@@ -177,7 +192,7 @@ background-color: rgba(255,0,0,0.1);
        아이디
    </td>
    <td colspan="3">
-    <input type=text value="${article.memberID }" name="writer"  disabled />
+    <input type=text value="${article.memberID }" name="writer" id="i_ID" disabled />
    </td>
   </tr>
   <tr>

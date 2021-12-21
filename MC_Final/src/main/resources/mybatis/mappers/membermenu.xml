@@ -11,7 +11,7 @@
 	</insert>
 	
 	<select id="selectMemberMenu" parameterType="menuVO" resultType="menuVO">
-		select * from membermenu where foodName=#{foodName}
+		select * from membermenu where foodName=#{foodName} and memberID=#{memberID} and foodDate=#{foodDate}
 	</select>
 	
 	<select id="membermenuList" parameterType="menuVO" resultType="menuVO">
@@ -19,7 +19,7 @@
 	</select>
 	
 	<delete id="deleteMemberMenu" parameterType="menuVO">
-		delete from membermenu where foodName=#{foodName}
+		delete from membermenu where foodName=#{foodName} and memberID=#{memberID} and foodDate=#{foodDate}
 	</delete>
 	
 	<insert id="membermenuWrite" parameterType="menuVO">
@@ -28,4 +28,8 @@
 			values(#{memberID}, #{foodName}, #{foodDate})
 		]]>
 	</insert>
+	
+	<delete id="deleteAllMemberMenu" parameterType="menuVO">
+		delete from membermenu where memberID=#{memberID}
+	</delete>
 </mapper>  

@@ -4,11 +4,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -32,9 +35,9 @@ public class BasketController {
 	
 	@RequestMapping("basketInsert")
 	@ResponseBody
-	public String basketInsert(FoodVO foodVO) {
+	public String basketInsert(HttpSession session, FoodVO foodVO, @CookieValue String memberID,@CookieValue("memberID") String id) {
 		MenuVO menuVO = new MenuVO();
-		menuVO.setMemberID("aaa");
+		menuVO.setMemberID(id);
 		menuVO.setFoodName(foodVO.getFoodName());
 		LocalDateTime now = LocalDateTime.now();
 		String formatedNow = now.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초"));
@@ -84,6 +87,7 @@ public class BasketController {
 	@RequestMapping("deleteBasket")
 	@ResponseBody
 	public String deleteBasket(MenuVO menuVO) {
+		System.out.println(menuVO);
 		try {
 			if(basketService.basketSelect(menuVO)!=null) {
 				basketService.deleteBasket(menuVO);

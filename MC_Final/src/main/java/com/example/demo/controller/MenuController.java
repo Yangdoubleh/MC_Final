@@ -9,6 +9,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,9 +31,9 @@ public class MenuController {
 	
 	@RequestMapping("menuInsert")
 	@ResponseBody
-	public String foodInsert(FoodVO foodVO) {
+	public String foodInsert(FoodVO foodVO, @CookieValue String memberID,@CookieValue("memberID") String id) {
 		MenuVO menuVO = new MenuVO();
-		menuVO.setMemberID("aaa");
+		menuVO.setMemberID(id);
 		menuVO.setFoodName(foodVO.getFoodName());
 		LocalDateTime now = LocalDateTime.now();
 		String formatedNow = now.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초"));
@@ -80,6 +81,8 @@ public class MenuController {
 	@ResponseBody
 	public String deleteMemberMenu(MenuVO menuVO) {
 		try {
+			System.out.println(menuVO);
+			System.out.println(memberMenuService.selectMemberMenu(menuVO));
 			if(memberMenuService.selectMemberMenu(menuVO)!=null) {
 				memberMenuService.deleteMemberMenu(menuVO);
 				return "내가 먹은 메뉴에서 삭제되었습니다.";

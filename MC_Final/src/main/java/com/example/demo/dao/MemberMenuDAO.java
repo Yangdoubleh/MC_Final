@@ -17,4 +17,5 @@ public interface MemberMenuDAO {
 	public MenuVO selectMemberMenu(MenuVO menuVO) throws DataAccessException;
 	public void deleteMemberMenu(MenuVO menuVO) throws DataAccessException;
 	public void membermenuWrite(MenuVO menuVO) throws DataAccessException;
+	public void deleteAllMemberMenu(MenuVO menuVO) throws DataAccessException;
 }

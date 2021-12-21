@@ -14,17 +14,17 @@
 <script type="text/javascript" src="../js/my.js"></script>
 <script type="text/javascript">
 	function check() {
-		if ($("#pw").val() != $("#pw_check").val()) {
+		if ($("#password").val() != $("#pw_check").val()) {
 			alert("비밀번호를 다시 확인해주세요");
-			$("#pw").val("");
+			$("#password").val("");
 			$("#pw_check").val("");
-			$("#pw").focus();
+			$("#password").focus();
 			return false;
 		}
 	}
 	function idCheck() {
-		const id = $("#id").val();
-		$.post("idCheck", {id}, function(msg){
+		const memberID = $("#memberID").val();
+		$.post("idCheck", {memberID}, function(msg){
 			alert(msg);
 		});
 	}
@@ -43,11 +43,11 @@
 			</h2>
 		</div>
 		<div class="textForm">
-			<input id="id" name="id" type="text" class="id" placeholder="아이디" required>
+			<input id="memberID" name="memberID" type="text" class="id" placeholder="아이디" required>
 			<input class="check_Btn" type="button" value="중복확인" onclick="idCheck()">
 		</div>
 		<div class="textForm">
-			<input id="pw" name="pw" type="password" class="pw" placeholder="비밀번호" required>
+			<input id="password" name="password" type="password" class="pw" placeholder="비밀번호" required>
 		</div>
 		<div class="textForm">
 			<input id="pw_check" type="password" class="pw" placeholder="비밀번호 확인" required>

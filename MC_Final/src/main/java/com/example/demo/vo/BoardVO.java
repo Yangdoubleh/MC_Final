@@ -3,7 +3,7 @@ package com.example.demo.vo;
 import java.util.Date;
 
 public class BoardVO {
-	private int no,grp,seq,lvl;
+	private int NO,grp,seq,lvl;
 	private String memberID,title,content,fileName;
 	private Date writeDate;
 	
@@ -13,10 +13,10 @@ public class BoardVO {
 	public BoardVO() {
 		
 	}
-	public BoardVO(int no, int grp, int seq, int lvl, String memberID, String title, String content, String fileName,
+	public BoardVO(int NO, int grp, int seq, int lvl, String memberID, String title, String content, String fileName,
 			Date writeDate) {
 		super();
-		this.no = no;
+		this.NO = NO;
 		this.grp = grp;
 		this.seq = seq;
 		this.lvl = lvl;
@@ -30,11 +30,11 @@ public class BoardVO {
 	public String toString() {
 		return "BoardVO [memberID=" + memberID + ", title="	+ title + ", content=" + content + ", fileName=" + fileName + ", writeDate=" + writeDate + "]";
 	}
-	public int getNo() {
-		return no;
+	public int getNO() {
+		return NO;
 	}
-	public void setNo(int no) {
-		this.no = no;
+	public void setNO(int NO) {
+		this.NO = NO;
 	}
 	public int getGrp() {
 		return grp;

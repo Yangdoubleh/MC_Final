@@ -31,4 +31,7 @@ public class BasketService {
 		basketDAO.deleteBasket(menuVO);
 	}
 	
+	public void deleteAllBasket(MenuVO menuVO) throws DataAccessException{
+		basketDAO.deleteAllBasket(menuVO);
+	}
 }

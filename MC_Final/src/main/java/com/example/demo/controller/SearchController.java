@@ -43,7 +43,10 @@ public class SearchController {
 			JSONObject jo2 = (JSONObject)ja1.get(i);
 			JSONObject jo3 = (JSONObject)jo2.get("recipe");
 			JSONObject jo4 = (JSONObject)jo3.get("images");
-			JSONObject jo5 = (JSONObject)jo4.get("REGULAR");
+			if ((JSONObject)jo4.get("REGULAR")!=null) {
+				JSONObject jo5 = (JSONObject)jo4.get("REGULAR");
+				joResult.put("foodImage", (String)jo5.get("url"));
+			}
 			JSONObject jo6 = (JSONObject)jo3.get("totalNutrients");
 			JSONObject joKcal = (JSONObject)jo6.get("ENERC_KCAL");
 			JSONObject joCarb = (JSONObject)jo6.get("CHOCDF");
@@ -53,7 +56,6 @@ public class SearchController {
 			String foodNameKr = translationService.translateenko(foodName);
 			joResult.put("foodName", foodNameKr);
 			joResult.put("url", (String)jo3.get("url"));
-			joResult.put("foodImage", (String)jo5.get("url"));
 			joResult.put("foodKcal", (Double)joKcal.get("quantity"));
 			joResult.put("foodFat", (Double)joFat.get("quantity"));
 			joResult.put("foodProt", (Double)joProt.get("quantity"));

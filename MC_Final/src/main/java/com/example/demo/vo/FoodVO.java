@@ -50,11 +50,7 @@ public class FoodVO {
 	}
 
 	public void setImageURL(String imageURL) {
-		if(imageURL!=null && !imageURL.equals("")) {
 			this.imageURL = imageURL;
-		} else {
-			System.out.println("imageURL error");
-		}
 	}
 
 	public int getKcal() {

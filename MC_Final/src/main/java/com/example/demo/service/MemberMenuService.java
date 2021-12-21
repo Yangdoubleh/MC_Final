@@ -35,6 +35,8 @@ public class MemberMenuService {
 		memberMenuDAO.membermenuWrite(menuVO);
 	}
 	
-	
+	public void deleteAllMemberMenu(MenuVO menuVO) throws DataAccessException{
+		memberMenuDAO.deleteAllMemberMenu(menuVO);
+	}
 
 }
