@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -19,5 +21,14 @@ public class BasketService {
 	
 	public MenuVO basketSelect(MenuVO menuVO) throws DataAccessException{
 		return basketDAO.selectBasket(menuVO);
+	}	
+	
+	public List<MenuVO> basketList(MenuVO menuVO) throws DataAccessException{
+		return basketDAO.basketList(menuVO);
 	}
+	
+	public void deleteBasket(MenuVO menuVO) throws DataAccessException{
+		basketDAO.deleteBasket(menuVO);
+	}
+	
 }

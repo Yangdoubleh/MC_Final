@@ -9,5 +9,6 @@
 		<mapper resource="mybatis/mappers/food.xml"/>
 		<mapper resource="mybatis/mappers/memberMenu.xml"/>
 		<mapper resource="mybatis/mappers/basket.xml"/>
+		<mapper resource="mybatis/mappers/board.xml"/>
 	</mappers>
 </configuration>  

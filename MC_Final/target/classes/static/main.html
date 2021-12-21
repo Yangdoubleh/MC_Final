@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="styles/reset.min.css" />
 <link rel="stylesheet" href="styles/style.css" />
 <link rel="stylesheet" href="styles/header.css" />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script>
 </head>
 <body>
 	<!-- Header Start -->
@@ -27,7 +29,7 @@
 					<li class="nav__item"><a href="main.html"><i
 							class="bi bi-house-fill" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;
 							홈</a></li>
-					<li class="nav__item"><a href="board.html"><i
+					<li class="nav__item"><a href="menu.html"><i
 							class="bi bi-layout-text-window-reverse" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;
 							나의 식단</a></li>
 					<li class="nav__item2"><a href="basket.html"><i class="bi bi-basket"
@@ -84,33 +86,58 @@
 			</div>
 			<div class="card">
 				<div class="card-block">
-					<h4 class="card-title">자유게시판</h4>
+					<h4 class="card-title"  href="board.html"> 게시판 </h4>
 				</div>
-				<div class="card-footer">
-					<a class="card-text" href="#">
-						<span>- 알고계셨나요?? (음식 관련 정보)<br>
-						<br> - 나만의 레시피
+				<div class="card-footer" >
+					<a class="card-text"  style="font-size: 17px; font-weight: bold;"  
+					onClick="location.href='../boardList'">
+						
+						<span>-최신 정보!! 알고계셨나요?? <br>
+						<br> - 인플루언서가 알려주는 나만의 레시피 !!
+						<br> 자유 게시판에서 정보를 나눠보아요 ~~! (미리보지 방지)
+						
+						
 						</span>
 					<a>
+					
 				</div>
 			</div>
 			<div class="card">
 				<div class="card-block">
-					<h4 class="card-title">내 건강</h4>
+					<h4 class="card-title" >일일 섭취량</h4>
 				</div>
-				<div class="card-footer">
-					<a class="card-text" href="health.html">
-						<span>- 나이/성별에 따른 영양소 DB 저장<br>
-						<br> - 권장 영양소와 현재 섭취한 영양소를 비교하는 그래프 추가<br>
-						<br> - 탄수화물, 단백질, 지방
-						</span>
+				<div class="card-footer" >
+				
+					<a class="card-text" href="circ.html">
+					
+								<!--            원 그래프 차트 시작 -->
+    		  	  		  <div class="chart chart1"  data-percent="1" id="chart1">
+    		  	  		  <span class="title" style="font-size: 25px; font-weight: bolder;"><img src="img/car.PNG" width="60px"  >
+    		  	  		  <br><span class="carb1"></span>
+    		  	  		  </span>
+    		  	  		  
+    		  	  		  </div>
+    		  	  		 
+  						  <div class="chart chart2" id="chart2" data-percent="55">
+  						  <span class="title" style="font-size: 25px; font-weight: bolder;"><img src="img/pro.PNG" width="60px" >
+							<br><span class="prob1"></span>
+  						  </span>
+  						  </div>
+  						  
+    					  <div class="chart chart3" id="chart3" data-percent="85">
+    					  <span class="title" style="font-size: 25px; font-weight: bolder;"><img src="img/fat.PNG" width="60px"> 
+    					  <br><span class="fat1"></span>
+    					  </span> 
+    					  </div>                                    
+  			
+				
 					</a>
 				</div>
 			</div>
 		</div>
 		<!-- Card End -->
 	</div>
-
+	<script src="js/circ.js"></script>
 	<script src="js/header.js"></script>
 </body>
 </html>
