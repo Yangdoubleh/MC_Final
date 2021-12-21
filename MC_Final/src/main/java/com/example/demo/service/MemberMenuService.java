@@ -19,11 +19,7 @@ public class MemberMenuService {
 		memberMenuDAO.insertMemberMenu(menuVO);
 	}
 	
-<<<<<<< HEAD
-	public List<MenuVO> memberMenuSelect(MenuVO menuVO) throws DataAccessException{
-=======
 	public MenuVO selectMemberMenu(MenuVO menuVO) throws DataAccessException{
->>>>>>> 2331e674f9ed2249f235f021789e1450d0031e6f
 		return memberMenuDAO.selectMemberMenu(menuVO);
 	}
 	

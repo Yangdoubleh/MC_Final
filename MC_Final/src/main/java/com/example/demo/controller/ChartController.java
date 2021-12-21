@@ -29,16 +29,29 @@ public class ChartController {
 		int kcal=0, carb=0, prot=0, fat=0;
 		JSONObject jo = new JSONObject();  //빈 제이슨 
 		FoodVO foodsearch = new FoodVO(); // 빈 푸드 vo
-		List list = memberMenuService.memberMenuSelect(menuVO); 
-		for (int i=0; i<3; i++) {
-			MenuVO lastmenu = (MenuVO)list.get(0);
-			System.out.println(list);		
-			foodsearch.setFoodName(lastmenu.getFoodName()); 
-			foodsearch = foodService.foodSelect(foodsearch);
-			kcal = kcal+foodsearch.getKcal();
-			carb = carb+foodsearch.getCarb();
-			prot = prot+foodsearch.getProt();
-			fat = fat+foodsearch.getFat();
+		List list = memberMenuService.membermenuList(menuVO); 
+		if(list.size()<3) {
+			for (int i=0; i<list.size(); i++) {
+				MenuVO lastmenu = (MenuVO)list.get(i);
+				System.out.println(list);		
+				foodsearch.setFoodName(lastmenu.getFoodName()); 
+				foodsearch = foodService.foodSelect(foodsearch);
+				kcal = kcal+foodsearch.getKcal();
+				carb = carb+foodsearch.getCarb();
+				prot = prot+foodsearch.getProt();
+				fat = fat+foodsearch.getFat();
+			}
+		} else {
+			for (int i=list.size()-3; i<list.size(); i++) {
+				MenuVO lastmenu = (MenuVO)list.get(i);
+				System.out.println(list);		
+				foodsearch.setFoodName(lastmenu.getFoodName()); 
+				foodsearch = foodService.foodSelect(foodsearch);
+				kcal = kcal+foodsearch.getKcal();
+				carb = carb+foodsearch.getCarb();
+				prot = prot+foodsearch.getProt();
+				fat = fat+foodsearch.getFat();
+			}
 		}
 		jo.put("kcal", kcal);
 		jo.put("carb", carb);

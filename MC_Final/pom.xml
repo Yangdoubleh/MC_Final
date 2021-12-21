@@ -65,15 +65,6 @@
 		    <version>20210307</version>
 		</dependency>
 		<dependency>
-<<<<<<< HEAD
-		    <groupId>com.googlecode.json-simple</groupId>
-		    <artifactId>json-simple</artifactId>
-		    <version>1.1</version>
-		    </dependency>
-		   <dependency>
-
-=======
->>>>>>> 2331e674f9ed2249f235f021789e1450d0031e6f
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
@@ -82,12 +73,7 @@
 			<artifactId>tomcat-embed-jasper</artifactId>
 			<scope>provided</scope>
 		</dependency>
-<<<<<<< HEAD
 
-
-		
-=======
->>>>>>> 2331e674f9ed2249f235f021789e1450d0031e6f
 		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
 		<dependency>
 		    <groupId>com.googlecode.json-simple</groupId>

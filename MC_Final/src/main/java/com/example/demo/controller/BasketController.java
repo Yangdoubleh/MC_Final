@@ -26,12 +26,9 @@ public class BasketController {
 	
 	@Autowired
 	FoodService foodService;
-	
-<<<<<<< HEAD
-=======
+
 	@Autowired
 	MemberMenuService memberMenuService;
->>>>>>> 2331e674f9ed2249f235f021789e1450d0031e6f
 	
 	@RequestMapping("basketInsert")
 	@ResponseBody
