@@ -47,29 +47,28 @@ public class BoardController {
 
 	
 	  @RequestMapping("boardWrite")
-		public RedirectView boardWrite(BoardVO boardVO, MultipartFile file) {
-			
+		public RedirectView boardWrite(BoardVO boardVO, MultipartFile file) {	  
 			String fileName = file.getOriginalFilename(); 
 			if (!fileName.equals("")) {
 				 boardVO.setFileName(fileName);
-				 try {
-					 File dir = new File("~/0jes/upload");
-					 if(!dir.exists()) {
-					      //Creating the directory
-					      boolean bool = dir.mkdir();
-					      if(bool){
-					         System.out.println("Directory created successfully");
-					         
-					      }else{
-					         System.out.println("Sorry couldn’t create specified directory");
-					      }
-					 }
-					file.transferTo(new File("~/0jes/upload/" + fileName));
-				 }
-				catch (IllegalStateException | IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} 
+					try {
+						File dir = new File("~/0jes/upload");
+						 if(!dir.exists()) {
+						      //Creating the directory
+						      boolean bool = dir.mkdir();
+						      if(bool){
+						         System.out.println("Directory created successfully");
+						         
+						      }else{
+						         System.out.println("Sorry couldn’t create specified directory");
+						      }
+						 }
+
+						file.transferTo(new File("~/0jes/upload/"+fileName));
+					} catch (IllegalStateException | IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 			}
 			
 			

@@ -107,7 +107,7 @@ body {
 				<button class="nav__toggle" type="button">
 					<i class="bi bi-justify"></i>
 				</button>
-				<ul class="nav__wrapper">
+				<ul class="nav__wrapper2">
 					<span id="idSpan" class="welcome"><li> 환영합니다!</li></span>
 					<li class="nav__item"><a class="sidebar" href="main.html"><i
 							class="bi bi-house-fill" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;

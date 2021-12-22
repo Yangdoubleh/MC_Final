@@ -5,246 +5,179 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 <meta charset="UTF-8" />
 <title>멀캠세끼</title>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="styles/reset.min.css" />
+<link rel="stylesheet" href="styles/style.css" />
+<link rel="stylesheet" href="styles/circ_header.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script>
-
-
 </head>
-<style>
-h1{
-text-align: center; 
-}
-.chart {
-	
-	float: left; 
-	width: 33.33%; 
-	height: 290px; 
-	text-align: center;
-	
-	}
-	
-.chart span.title{
-	position: relative; 
-	display: block; 
-	width: 100%; 
-	top: 260px; 
-	
-	}
-.zt-skill-bar {
-        color: #fff;
-        font-size: 11px;
-        line-height: 65px;
-        height: 65px;
-        margin-top: 30px;
-		margin-left: 100px;
-		margin-right: 100px;
-		text-align: center; 
-        background-color: rgba(0,0,0,0.1);
-		position:relative;
-        -webkit-border-radius: 2px;
-           -moz-border-radius: 2px;
-            -ms-border-radius: 2px;
-                border-radius: 2px;
 
-    }
-
-
-    .zt-skill-bar * {
-        webkit-transition: all 0.5s ease;
-          -moz-transition: all 0.5s ease;
-           -ms-transition: all 0.5s ease;
-            -o-transition: all 0.5s ease;
-               transition: all 0.5s ease;
-    }
-
-    .zt-skill-bar div {
-        background-color: #ddff00;
-        position: relative;
-        padding-left: 25px;
-        width: 0;
-        
-
-    }
-
-    .zt-skill-bar span {
-        display: block;
-        position: absolute;
-        right: 0;
-        top: 0;
-        height: 100%;
-        padding: 0 5px 0 10px;
-        background-color: #1a1a1a;
-		
-        -webkit-border-radius: 0 2px 2px 0;
-           -moz-border-radius: 0 2px 2px 0;
-            -ms-border-radius: 0 2px 2px 0;
-                border-radius: 0 2px 2px 0;
-    }
-
-    .zt-skill-bar span:before {
-        content: "";
-        position: absolute;
-        width: 6px;
-        height: 6px;
-        top: 50%;
-        left: -3px;
-        margin-top: -3px;
-        background-color: #1a1a1a;
-
-        -webkit-transform: rotate(45deg);
-           -moz-transform: rotate(45deg);
-            -ms-transform: rotate(45deg);
-                transform: rotate(45deg);
-    }
-#cal{
-	position: relative;
-	font-family: Malgun Gothic;
-	font-size: 15px;
-	color:black;
-	font-weight: bolder;
-	text-align: center;	
-	max-width: 100%;
-}
-
-</style>
 <body>
-						<!-- <a href="main.html"><i class="bi bi-house-fill" style="font-size: 35px; color:pink; "></i>
-						</a>
-						 -->
-						 <a href="main.html"><i
-							class="bi bi-house-fill" style="font-size: 55px; color: pink;  margin: 45px; "></i>
-							</a>
-							
-						 <div class="zt-span6 last" >
-						<h1>내 세끼 섭취 칼로리</h1> 
-						<div class="zt-skill-bar" ><div data-width="88" id="cal" width="10%;" class="cal"><span style="color: white;" class="per"></span></div></div>
-												
-							
-							<!--            원 그래프 차트 시작 -->
-    		  	  		  <div class="chart chart1"  data-percent="1" id="chart1">
-    		  	  		  <span class="title" style="font-size: 25px; font-weight: bolder;"><img src="img/car.PNG" width="120px"  >
-    		  	  		  <br><span class="carb1"></span>
-    		  	  		  </span>
-    		  	  		  
-    		  	  		  </div>
-    		  	  		 
-  						  <div class="chart chart2" id="chart2" data-percent="55">
-  						  <span class="title" style="font-size: 25px; font-weight: bolder;"><img src="img/pro.PNG" width="120px" >
-							<br><span class="prob1"></span>
-  						  </span>
-  						  </div>
-  						  
-    					  <div class="chart chart3" id="chart3" data-percent="85">
-    					  <span class="title" style="font-size: 25px; font-weight: bolder;"><img src="img/fat.PNG" width="120px"> 
-    					  <br><span class="fat1"></span>
-    					  </span> 
-    					  </div>        
-    					  </div>         
-    					  
-</body>  
+	<!-- Header Start -->
+	<header class="site-header">
+	<div class="wrapper site-header__wrapper">
+		<nav class="nav"></nav>
+		<a href="main.html" class="brand">멀캠세끼</a>
+		<nav class="nav"><a href="voice_chatbot.html"  class="chat_Btn" type="button"><i class="bi bi-chat-right-dots" style="font-size:25px"></i></a>
+				&nbsp;&nbsp;<button class="nav__toggle" type="button"><i class="bi bi-justify"></i></button>
+				<ul class="nav__wrapper2">
+					<span id="idSpan" class="welcome"><li> 환영합니다!</li></span>
+					<li class="nav__item"><a href="main.html"><i
+							class="bi bi-house-fill" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;
+							홈</a></li>
+					<li class="nav__item"><a href="menu.html"><i
+							class="bi bi-layout-text-window-reverse" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;
+							나의 식단</a></li>
+					<li class="nav__item"><a href="basket.html"><i class="bi bi-basket"
+							style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;장바구니</a></li>
+					<li class="nav__item"><a href="ingredientrecommand.html"><i class="bi bi-hand-thumbs-up-fill"
+							style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;음식 추천</a></li>
+					<li class="nav__item"><a href="boardList"><i class="bi bi-clipboard"
+							style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;게시판</a></li>
+					<li class="nav__item2"><a href="circ.html"><i class="bi bi-file-earmark-bar-graph"
+							style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;영양소 분석</a></li>
+					<br>
+					<li class="nav__item"><a href="mypage.html"><i
+							class="bi bi-person-fill" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;마이페이지</a></li>
+					<li class="nav__item"><a id="logoutBtn" href="index.html"><i
+							class="bi bi-door-open" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;로그아웃</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<!-- Header End -->
+		<br><br><br><br><br><br>
+		<div class="zt-span6 last">
+			<h1>내 세끼 섭취 칼로리</h1>
+			<div class="zt-skill-bar">
+				<div data-width="88" id="cal" width="10%;" class="cal">
+					<span style="color: white;" class="per"></span>
+				</div>
+			</div>
+
+			<!-- 원 그래프 차트 시작 -->
+			<div class="chart-form">
+			<div class="chart chart1" id="chart1" data-percent="1">
+				<span class="title" style="font-size: 25px; font-weight: bolder;"><img src="img/car.PNG" width="120px"> <br> 
+				<span class="carb1"></span> </span>
+			</div>
+
+			<div class="chart chart2" id="chart2" data-percent="55">
+				<span class="title" style="font-size: 25px; font-weight: bolder;"><img src="img/pro.PNG" width="120px"> <br> 
+				<span class="prob1"></span> </span>
+			</div>
+
+			<div class="chart chart3" id="chart3" data-percent="85">
+				<span class="title" style="font-size: 25px; font-weight: bolder;"><img src="img/fat.PNG" width="120px"> <br> 
+				<span class="fat1"></span> </span>
+			</div>
+			</div>
+		</div>
+	
+	<script src="js/header.js"></script>
+</body>
 </html>
 
 <script>    
 
 $(document).ready(function(){
-	const memberID = $.cookie("memberID");
-			
-	$.post("updateChart1", {memberID}, function(msg){
-		
-		
-		const kcal = JSON.parse(msg).kcal;
-		const kcalC = kcal/20; //칼로리 퍼센테이지 계산 2000kcal를 기준
-		const kcalCp =kcalC.toFixed(0);
-		//console.log(kcalC); // 
-		const carb = JSON.parse(msg).carb;
-		const carbC = carb/392*100;
-		const carbCp = carbC.toFixed(0);
-		
-		
-		const prot = JSON.parse(msg).prot;
-		const protC = prot/235*100;
-		const protCp = protC.toFixed(0);
-		
-		const fat = JSON.parse(msg).fat;
-		const fatC = fat/70*100;
-		const fatCp = fatC.toFixed(0);
-		
-		
-		
-		//막대 바 시작//
-		(function( $ ) {
-		    "use strict";
-		    $(function() {
-		        function animated_contents() {
-		            $(".zt-skill-bar > div ").each(function (i) {
-		                var $this  = $(this),
-		                    skills = $this.data('width');
+   const memberID = $.cookie("memberID");
+         
+   $.post("updateChart1", {memberID}, function(msg){
+      
+      
+      const kcal = JSON.parse(msg).kcal;
+      const kcalC = kcal/20; //칼로리 퍼센테이지 계산 2000kcal를 기준
+      const kcalCp =kcalC.toFixed(0);
+      //console.log(kcalC); // 
+      const carb = JSON.parse(msg).carb;
+      const carbC = carb/392*100;
+      const carbCp = carbC.toFixed(0);
+      
+      
+      const prot = JSON.parse(msg).prot;
+      const protC = prot/235*100;
+      const protCp = protC.toFixed(0);
+      
+      const fat = JSON.parse(msg).fat;
+      const fatC = fat/70*100;
+      const fatCp = fatC.toFixed(0);
+      
+      
+      
+      //막대 바 시작//
+      (function( $ ) {
+          "use strict";
+          $(function() {
+              function animated_contents() {
+                  $(".zt-skill-bar > div ").each(function (i) {
+                      var $this  = $(this),
+                          skills = $this.data('width');
 
-		                 $this.css({'width' : kcalC + '%'});
-		                 $('.cal').append( kcal +"/2000kcal")
-		                 $('.per').append(kcalC+"%")
-		                 $('.carb1').append(carb+"/392 ("+carbCp+"%)")
-		                 $('.prob1').append(prot+"/235 ("+protCp+"%)")
-		                 $('.fat1').append(fat+"/70 ("+fatCp+"%)")
-		            });
-		        }
-		        
-		        if(jQuery().appear) {
-		            $('.zt-skill-bar').appear().on('appear', function() {
-		                animated_contents();
-		            });
-		        } else {
-		            animated_contents();
-		        }
-		    });
-		}(jQuery));
-		//막대 바 끝//
-		$('#chart1').attr('data-percent',carbCp);
-		    
-			
-			$('#chart1').easyPieChart({
-			barColor: '#ff9998',
-		    trackColor: 'rgba(0,0,0,0.1)',
-		    scaleColor: 'black',
-		    lineCap: 'butt',
-		    lineWidth: 60,
-		    size: 400,
-		    animate: 1000,
-		    onStart: $.noop,
-		    onStop: $.noop
-		  } );
-		$('#chart2').attr('data-percent',protCp);
-	
-		$('#chart2').easyPieChart({
-			
-		    barColor: '#ff9998',
-		    trackColor: 'rgba(0,0,0,0.1)',
-		    scaleColor: 'black',
-		    lineCap: 'butt',
-		    lineWidth: 60,
-		    size: 400,
-		    animate: 1000,
-		    onStart: $.noop,
-		    onStop: $.noop
-		  });
-		$('#chart3').attr('data-percent',fatCp);
-		$('#chart3').easyPieChart({
-			
-		    barColor: '#ff9998',
-		    trackColor: 'rgba(0,0,0,0.1)',
-		    scaleColor: 'black',
-		    lineCap: 'butt',
-		    lineWidth: 60,
-		    size: 400,
-		    animate: 1000,
-		    onStart: $.noop,
-		    onStop: $.noop
-		  });
+                       $this.css({'width' : kcalC + '%'});
+                       $('.cal').append( kcal +"/2000kcal")
+                       $('.per').append(kcalC+"%")
+                       $('.carb1').append(carb+"/392 ("+carbCp+"%)")
+                       $('.prob1').append(prot+"/235 ("+protCp+"%)")
+                       $('.fat1').append(fat+"/70 ("+fatCp+"%)")
+                  });
+              }
+              
+              if(jQuery().appear) {
+                  $('.zt-skill-bar').appear().on('appear', function() {
+                      animated_contents();
+                  });
+              } else {
+                  animated_contents();
+              }
+          });
+      }(jQuery));
+      //막대 바 끝//
+      
+      $('#chart1').attr('data-percent',carbCp);   
+         $('#chart1').easyPieChart({
+         barColor: '#ff9998',
+          trackColor: 'rgba(0,0,0,0.1)',
+          scaleColor: 'black',
+          lineCap: 'butt',
+          lineWidth: 60,
+          size: 400,
+          animate: 1000,
+          onStart: $.noop,
+          onStop: $.noop
 
-	
-	}); 
-	});
+        } );
+      $('#chart2').attr('data-percent',protCp);
+   
+      $('#chart2').easyPieChart({
+         
+          barColor: '#ff9998',
+          trackColor: 'rgba(0,0,0,0.1)',
+          scaleColor: 'black',
+          lineCap: 'butt',
+          lineWidth: 60,
+          size: 400,
+          animate: 1000,
+          onStart: $.noop,
+          onStop: $.noop
+        });
+      $('#chart3').attr('data-percent',fatCp);
+      $('#chart3').easyPieChart({
+         
+          barColor: '#ff9998',
+          trackColor: 'rgba(0,0,0,0.1)',
+          scaleColor: 'black',
+          lineCap: 'butt',
+          lineWidth: 60,
+          size: 400,
+          animate: 1000,
+          onStart: $.noop,
+          onStop: $.noop
+        });
+   });  
+});
 </script>
-

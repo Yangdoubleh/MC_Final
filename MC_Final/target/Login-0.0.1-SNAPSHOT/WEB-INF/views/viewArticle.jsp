@@ -216,7 +216,7 @@ background-color: rgba(255,0,0,0.1);
    <td>
    		<c:choose> 
 	  		<c:when test="${not empty article.fileName && article.fileName!='null' }">	   	
-		      	<input  type= "hidden"   name="originalFileName" value="${article.fileName }" />
+		      	<input  type= "hidden"   name="originalFileName" value="~/0jes/upload/${article.fileName }" />
 		    	<img src="~/0jes/upload/${article.fileName}" id="preview"  height="277" /><br>
 		     	 
 		 	</c:when>		 
