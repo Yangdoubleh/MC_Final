@@ -49,7 +49,7 @@ public class TTS_Service {
              // 랜덤한 이름으로 mp3 파일 생성
              
              if(oldName!=null) {
-            	 File oldFile=new File("src\\main\\webapp\\media\\"+oldName+".mp3");
+            	 File oldFile=new File(oldName+".mp3");
             	 if(oldFile.exists()) { 
             		 System.gc();
             		 System.out.println(oldFile.delete());
@@ -58,7 +58,7 @@ public class TTS_Service {
              
              String tempname = Long.valueOf(new Date().getTime()).toString();
              oldName=tempname;
-             File f = new File("src\\main\\webapp\\media\\"+tempname+".mp3");
+             File f = new File(tempname+".mp3");
              f.createNewFile();
              
              OutputStream outputStream = new FileOutputStream(f);

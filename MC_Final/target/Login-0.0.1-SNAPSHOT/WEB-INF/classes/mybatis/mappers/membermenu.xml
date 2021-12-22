@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.example.demo.dao.MemberMenuDAO">
+
+	<insert id="insertMemberMenu" parameterType="menuVO">
+		insert into membermenu (memberID, foodName, foodDate)
+		values(#{memberID}, #{foodName}, #{foodDate})
+	</insert>
+	
+	<select id="selectMemberMenu" parameterType="menuVO" resultType="menuVO">
+		select * from membermenu where foodName=#{foodName} and memberID=#{memberID} and foodDate=#{foodDate}
+	</select>
+	
+	<select id="membermenuList" parameterType="menuVO" resultType="menuVO">
+		select * from membermenu where memberID=#{memberID}
+	</select>
+	
+	<delete id="deleteMemberMenu" parameterType="menuVO">
+		delete from membermenu where foodName=#{foodName} and memberID=#{memberID} and foodDate=#{foodDate}
+	</delete>
+	
+	<insert id="membermenuWrite" parameterType="menuVO">
+		<![CDATA[
+			insert into membermenu (memberID, foodName, foodDate)
+			values(#{memberID}, #{foodName}, #{foodDate})
+		]]>
+	</insert>
+	
+	<delete id="deleteAllMemberMenu" parameterType="menuVO">
+		delete from membermenu where memberID=#{memberID}
+	</delete>
+</mapper>  

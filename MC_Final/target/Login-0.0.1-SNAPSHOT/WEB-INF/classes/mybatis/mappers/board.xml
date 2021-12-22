@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.dao.BoardDAO">	
+	
+	<select id="boardList"  resultType="boardVO">
+		select * from board order by NO desc
+	</select>	
+
+	<insert id="boardWrite" parameterType="boardVO">
+	<![CDATA[
+		insert into board( memberID,title,content, fileName) 
+		values(#{memberID}, #{title}, #{content}, #{fileName} )
+	]]>
+</insert>
+
+	<select id="selectArticleID" resultType="boardVO" parameterType="boardVO">
+		select * from board where NO=#{NO}
+	</select>
+
+	<select id="viewArticle" resultType="boardVO" parameterType="int">		
+	select * from board	where NO=#{NO}		
+</select>
+	
+	 <update id="update" parameterType="boardVO">
+   update board set title=#{title}, content=#{content} where NO=#{NO}
+   </update>
+	
+<delete id="delete" parameterType="boardVO">
+		delete from board where NO=#{NO}
+</delete>
+
+<delete id="deleteAllboard" parameterType="boardVO">
+		delete from board where memberID=#{memberID}
+</delete>
+	
+</mapper> 

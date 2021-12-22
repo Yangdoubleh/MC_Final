@@ -1,4 +1,4 @@
-CREATE TABLE Member (
+CREATE TABLE member (
 	memberID VARCHAR(20) PRIMARY KEY,
 	password VARCHAR(30) NOT NULL,
 	nickname VARCHAR(30) NOT NULL,
@@ -6,7 +6,7 @@ CREATE TABLE Member (
 	age VARCHAR(10)
 );
 
-CREATE TABLE Food (
+CREATE TABLE food (
 	foodName VARCHAR(50) PRIMARY KEY,
 	kcal FLOAT(20),
 	carb FLOAT(20),
@@ -26,24 +26,24 @@ CREATE TABLE board(
 	seq INT,
 	lvl INT,
 	fileName VARCHAR(50),
-	FOREIGN KEY (memberID) REFERENCES Member(memberID)
+	FOREIGN KEY (memberID) REFERENCES member(memberID)
 );
 
-CREATE TABLE MemberMenu(
+CREATE TABLE membermenu(
 	menuNo INT PRIMARY KEY AUTO_INCREMENT,
 	memberID VARCHAR(20) NOT NULL,
 	foodName VARCHAR(50) NOT NULL,
 	foodDate VARCHAR(30) NOT NULL,
-	FOREIGN KEY (memberID) REFERENCES Member(memberID),
-	FOREIGN KEY (foodName) REFERENCES Food(foodName)
+	FOREIGN KEY (memberID) REFERENCES member(memberID),
+	FOREIGN KEY (foodName) REFERENCES food(foodName)
 );
 
-CREATE TABLE Basket(
+CREATE TABLE basket(
 	basketNo INT PRIMARY KEY AUTO_INCREMENT,
 	memberID VARCHAR(20) NOT NULL,
 	foodName VARCHAR(50) NOT NULL,
 	foodDate VARCHAR(30) NOT NULL,
 	FOREIGN KEY (memberID) REFERENCES member(memberID),
-	FOREIGN KEY (foodName) REFERENCES Food(foodName)
+	FOREIGN KEY (foodName) REFERENCES food(foodName)
 );
 
