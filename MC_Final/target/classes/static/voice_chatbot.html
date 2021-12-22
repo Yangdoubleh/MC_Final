@@ -2,23 +2,36 @@
 <html>
 <head>
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>멀캠세끼</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+
 <link rel="stylesheet" href="../styles/reset.min.css" />
 <link rel="stylesheet" href="../styles/style.css" />
 <link rel="stylesheet" href="../styles/header.css" />
 <style type="text/css">
+
 footer {
-	z-index: 30; 
-	width:75%;
+   z-index: 30; 
+   width:80%;
+   padding-bottom:30px;
+}
+
+.outDiv{
+ overflow: auto; 
+
+ width:80%; 
+ height:600px; 
+ margin:10px; 
+ text-align: center;
+ background:#b6c6d6;
 }
 
 .inputField{
-	width:50%;
-	border-radius:15px;
-	border : 5px solid pink;
+   width:60%;
+   border-radius:15px;
+   border : 3px solid pink;
 }
 
 .balloon {  
@@ -28,6 +41,7 @@ footer {
  height:auto;
  border-radius: 15px; 
 }
+
 .balloon:after { 
  border-bottom:0px solid transparent; 
  border-left: 10px solid transparent; 
@@ -38,18 +52,15 @@ footer {
 }
 
 .chatbot{
-padding:10px;
-
- margin-left: 10px;
- background:goldenrod; 
+ padding:10px;
+ margin-left: 0px;
+ right:30px;
+ background:#fff; 
  text-align: left;  
  padding-left:20px;
 }
 
-.chatbot:after { 
- border-top: 10px solid goldenrod; 
- right:230px;  
-}
+
 .me-display{
  display: flex;
 
@@ -64,36 +75,40 @@ transform:translate(5%,0%);
 
 .me { 
  padding:10px;
- margin:20px -10px 20px 20px;
+ margin:20px -10px 20px 10px;
  width:250px; 
  height:auto;
   
-  background:yellowgreen; 
+  background:#fcec5b; 
   border-radius: 15px;
-  text-align: right;	
+  text-align: right;   
 
 }
 .me-after { 
   width: 0px;
   height: 0px;
   border-top: 7px solid transparent;
-  border-left: 15px solid yellowgreen;
-  border-bottom: 7px solid transparent;  	
+  border-left: 15px solid #fcec5b;
+  border-bottom: 7px solid transparent;     
   margin:30px 20px 20px 0px; 
 }
+
 .chatbot-after { 
   width: 0px;
   height: 0px;
   border-top: 7px solid transparent;
-  border-left: 15px solid goldenrod;
-  border-bottom: 7px solid transparent;  	
+  border-left: 15px solid #fff;
+  border-bottom: 7px solid transparent;     
   margin:30px 20px 20px 0px; 
   transform: scaleX(-1);
 }
 
 .me-margin {   
    margin:20px 20px 20px 0px; 
-  
+}
+
+.chat-margin {   
+   margin:20px 20px 20px 0px; 
 }
 
 
@@ -105,138 +120,138 @@ transform:translate(5%,0%);
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
-	
+   
 <script type="text/javascript" >
-	$(document).ready(function(){
-		
-		window.SpeechRecognition=window.SpeechRecognition || 
-		window.webkitSpeechRecognition;
-		const recognition=new SpeechRecognition();
-		
-		recognition.interimResults=true;
-		recognition.addEventListener("result",function(e){
-			$("#inputField").val(e.results[0][0].transcript);
-		});
+   $(document).ready(function(){
+      
+      window.SpeechRecognition=window.SpeechRecognition || 
+      window.webkitSpeechRecognition;
+      const recognition=new SpeechRecognition();
+      
+      recognition.interimResults=true;
+      recognition.addEventListener("result",function(e){
+         $("#inputField").val(e.results[0][0].transcript);
+      });
 
-		
-		$("#mic").click(function(){
-			$("#mic").attr("src","../img/mic_on_small.png");
-			recognition.start();
-			
-			setTimeout(function(){
-				$("#mic").attr("src","../img/mic_off_small.png");
-				recognition.stop();
-				chatbot();
-			},3000);
-		});
-		
-		
-		$("#inputField").keyup(function(){
-			if(window.event.keyCode==13){
-				chatbot();
-			}//end if
-		});//end function
-		
-		
-		
-		
-		
-	});
-	
+      
+      $("#mic").click(function(){
+         $("#mic").attr("src","../img/mic_on_small.png");
+         recognition.start();
+         
+         setTimeout(function(){
+            $("#mic").attr("src","../img/mic_off_small.png");
+            recognition.stop();
+            chatbot();
+         },3000);
+      });
+      
+      
+      $("#inputField").keyup(function(){
+         if(window.event.keyCode==13){
+            chatbot();
+         }//end if
+      });//end function
+      
+      
+      
+      
+      
+   });
+   
 
-	$(function(){
-		stickyFooter();
+   $(function(){
+      stickyFooter();
 
-		$(window).scroll(stickyFooter).resize(stickyFooter);
-	});
+      $(window).scroll(stickyFooter).resize(stickyFooter);
+   });
 
 
-	function stickyFooter(){
-		document_height = $(document).height(); // 문서 전체 높이
-		document_scrollTop = $(document).scrollTop(); // 문서 전체 높이 중 스크롤 위치
-		window_height = $(window).height(); // 창 높이
-		footer_height = $("footer").height();
+   function stickyFooter(){
+      document_height = $(document).height(); // 문서 전체 높이
+      document_scrollTop = $(document).scrollTop(); // 문서 전체 높이 중 스크롤 위치
+      window_height = $(window).height(); // 창 높이
+      footer_height = $("footer").height();
 
-		gap = document_height - footer_height - window_height; 
-		bottom = document_scrollTop - gap ; 
+      gap = document_height - footer_height - window_height; 
+      bottom = document_scrollTop - gap ; 
 
-		if(document_scrollTop > gap){
-			$("footer").css("bottom", bottom+"px");
-		}else{
-			$("footer").css("bottom","0");
-		}
-	}
-	
-	
-	function chatbot(){
-		const inputData=$("#inputField").val();
-		$("#inputField").val("");
-		$("#outDiv").append("<div  class='me-display'><img class='me-margin' src='../img/person.png' width='30' height='30' class='meImg'><span class='me-after'></span><span class='me' >"+inputData+"&nbsp;&nbsp;</span></div>");
-		
-		$.post('../chatbot',{inputData},function(data){
-			//console.log(data);
-			data=JSON.parse(data);
-			//console.log(data);
-			const audio=new Audio("~/0jes/upload/"+data.fileName+".mp3");
-			audio.play();
-				
-			let returnData=data.bubbles[0].data.description;
-			if(returnData){
-				returnData="#"+returnData;						
-			}else{
-				returnData="#"+data.bubbles[0].data.cover.data.description;
-			}
-			$("#outDiv").append("<div class='chatbot-display'><img src='../img/chatbot.png' width='30' height='30'><span class='chatbot-after'></span><span class='balloon chatbot'>"+returnData+"</span></div>");
-			
-		});
-	}
+      if(document_scrollTop > gap){
+         $("footer").css("bottom", bottom+"px");
+      }else{
+         $("footer").css("bottom","0");
+      }
+   }
+   
+   
+   function chatbot(){
+      const inputData=$("#inputField").val();
+      $("#inputField").val("");
+      $("#outDiv").append("<div  class='me-display'><img class='me-margin' src='../img/person.png' width='35' height='35' class='meImg'><span class='me-after'></span><span class='me' >"+inputData+"&nbsp;&nbsp;</span></div>");
+      
+      $.post('../chatbot',{inputData},function(data){
+         //console.log(data);
+         data=JSON.parse(data);
+         //console.log(data);
+         const audio=new Audio("../media/"+data.fileName+".mp3");
+         audio.play();
+            
+         let returnData=data.bubbles[0].data.description;
+         if(returnData){
+            returnData="#"+returnData;                  
+         }else{
+            returnData="#"+data.bubbles[0].data.cover.data.description;
+         }
+         $("#outDiv").append("<div class='chatbot-display'><img class='chat-margin' src='../img/chatbot.png' width='35' height='35'><span class='chatbot-after'></span><span class='balloon chatbot'>"+returnData+"</span></div>");
+         
+      });
+   }
 
 </script>
 </head>
 <body>
 <!-- Header Start -->
-	<header class="site-header">
-		<div class="wrapper site-header__wrapper">
-			<nav class="nav"></nav>
-			<a href="main.html" class="brand">멀캠세끼</a>
-			<nav class="nav">
-				<a href="voice_chatbot.html"  class="chat_Btn" type="button"><i
-					class="bi bi-chat-right-dots"></i></a>
-				<button class="nav__toggle" type="button">
-					<i class="bi bi-justify"></i>
-				</button>
-				<ul class="nav__wrapper">
-					<span id="idSpan" class="welcome"><li> 환영합니다!</li></span>
-					<li class="nav__item"><a href="main.html"><i
-							class="bi bi-house-fill" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;
-							홈</a></li>
-					<li class="nav__item"><a href="menu.html"><i
-							class="bi bi-layout-text-window-reverse" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;
-							나의 식단</a></li>
-					<li class="nav__item2"><a href="basket.html"><i class="bi bi-basket"
-							style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;장바구니</a></li>
-					<br>
-					<li class="nav__item"><a href="mypage.html"><i
-							class="bi bi-person-fill" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;마이페이지</a></li>
-					<li class="nav__item"><a id="logoutBtn" href="index.html"><i
-							class="bi bi-door-open" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;로그아웃</a></li>
-				</ul>
-			</nav>
-		</div>
-	</header>
-	<!-- Header End -->
-	<br>
-	<br>
-		    <center>
-		    &nbsp;<h3>챗봇으로 레시피 주문해 보세요</h3><br>
-				<div  id="outDiv" style="overflow: auto; border: 5px solid pink;width:450px; height:800px; margin:10px; background:#6884b3" ></div> 
-				<footer><h5>입력 : 
-					<input id = "inputField" class="inputField">
-					<img src="../img/mic_off_small.png" id="mic">
-				</footer> 
-			</center>
-	
-	<script src="../js/header.js"></script>
+   <header class="site-header">
+      <div class="wrapper site-header__wrapper">
+         <nav class="nav"></nav>
+         <a href="main.html" class="brand">멀캠세끼</a>
+         <nav class="nav">
+            <a href="voice_chatbot.html"  class="chat_Btn" type="button"><i
+               class="bi bi-chat-right-dots"></i></a>
+            <button class="nav__toggle" type="button">
+               <i class="bi bi-justify"></i>
+            </button>
+            <ul class="nav__wrapper">
+               <span id="idSpan" class="welcome"><li> 환영합니다!</li></span>
+               <li class="nav__item"><a href="main.html"><i
+                     class="bi bi-house-fill" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;
+                     홈</a></li>
+               <li class="nav__item"><a href="menu.html"><i
+                     class="bi bi-layout-text-window-reverse" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;
+                     나의 식단</a></li>
+               <li class="nav__item2"><a href="basket.html"><i class="bi bi-basket"
+                     style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;장바구니</a></li>
+               <br>
+               <li class="nav__item"><a href="mypage.html"><i
+                     class="bi bi-person-fill" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;마이페이지</a></li>
+               <li class="nav__item"><a id="logoutBtn" href="index.html"><i
+                     class="bi bi-door-open" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;로그아웃</a></li>
+            </ul>
+         </nav>
+      </div>
+   </header>
+   <!-- Header End -->
+   <br>
+   <br>
+          <center>
+          &nbsp;<h3>챗봇으로 레시피 주문해 보세요</h3><br>
+            <div  id="outDiv" class="outDiv" ></div> 
+            <footer><h5>입력 : 
+               <input id = "inputField" class="inputField">
+               <img src="../img/mic_off_small.png" width="45" height="45"id="mic">
+            </footer> 
+         </center>
+   
+   <script src="../js/header.js"></script>
 
 </body>
 </html>
