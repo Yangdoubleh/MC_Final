@@ -47,21 +47,10 @@ public class TTS_Service {
              int read = 0;
              byte[] bytes = new byte[1024];
              // 랜덤한 이름으로 mp3 파일 생성
-             File dir = new File("~/0jes/upload");
-			 if(!dir.exists()) {
-			      //Creating the directory
-			      boolean bool = dir.mkdir();
-			      if(bool){
-			         System.out.println("Directory created successfully");
-			         
-			      }else{
-			         System.out.println("Sorry couldn’t create specified directory");
-			      }
-			 }
-
+             
              if(oldName!=null) {
             	 
-            	 File oldFile=new File("~/0jes/upload"+oldName);
+            	 File oldFile=new File("src\\main\\webapp\\media\\"+oldName+".mp3");
             	 if(oldFile.exists()) { 
             		 System.gc();
             		 System.out.println(oldFile.delete());
@@ -70,7 +59,7 @@ public class TTS_Service {
              
              String tempname = Long.valueOf(new Date().getTime()).toString();
              oldName=tempname;
-             File f = new File("~/0jes/upload"+tempname);
+             File f = new File("src\\main\\webapp\\media\\"+tempname+".mp3");
              f.createNewFile();
              
              OutputStream outputStream = new FileOutputStream(f);

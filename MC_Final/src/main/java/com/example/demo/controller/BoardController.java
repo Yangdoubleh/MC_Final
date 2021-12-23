@@ -51,24 +51,15 @@ public class BoardController {
 			String fileName = file.getOriginalFilename(); 
 			if (!fileName.equals("")) {
 				 boardVO.setFileName(fileName);
-					try {
-						File dir = new File("~/0jes/upload");
-						 if(!dir.exists()) {
-						      //Creating the directory
-						      boolean bool = dir.mkdir();
-						      if(bool){
-						         System.out.println("Directory created successfully");
-						         
-						      }else{
-						         System.out.println("Sorry couldn’t create specified directory");
-						      }
-						 }
-
-						file.transferTo(new File("~/0jes/upload/"+fileName));
-					} catch (IllegalStateException | IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+						try {
+							file.transferTo(new File("C:\\0jes\\workspace\\MC_Final\\src\\main\\webapp\\uploadImg\\" + fileName));
+						} catch (IllegalStateException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 			}
 			
 			

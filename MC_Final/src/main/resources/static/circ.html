@@ -95,16 +95,16 @@ $(document).ready(function(){
       const kcalCp =kcalC.toFixed(0);
       //console.log(kcalC); // 
       const carb = JSON.parse(msg).carb;
-      const carbC = carb/392*100;
+      const carbC = carb/279*100;
       const carbCp = carbC.toFixed(0);
       
       
       const prot = JSON.parse(msg).prot;
-      const protC = prot/235*100;
+      const protC = prot/75*100;
       const protCp = protC.toFixed(0);
       
       const fat = JSON.parse(msg).fat;
-      const fatC = fat/70*100;
+      const fatC = fat/51*100;
       const fatCp = fatC.toFixed(0);
       
       
@@ -121,9 +121,9 @@ $(document).ready(function(){
                        $this.css({'width' : kcalC + '%'});
                        $('.cal').append( kcal +"/2000kcal")
                        $('.per').append(kcalC+"%")
-                       $('.carb1').append(carb+"/392 ("+carbCp+"%)")
-                       $('.prob1').append(prot+"/235 ("+protCp+"%)")
-                       $('.fat1').append(fat+"/70 ("+fatCp+"%)")
+                       $('.carb1').append(carb+"/279 ("+carbCp+"%)")
+                       $('.prob1').append(prot+"/75 ("+protCp+"%)")
+                       $('.fat1').append(fat+"/51 ("+fatCp+"%)")
                   });
               }
               
